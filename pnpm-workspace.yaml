@@ -1,0 +1,12 @@
+packages:
+  - "apps/*" # This line tells pnpm to include all packages in the "apps" directory.
+  - "packages/*" # This line tells pnpm to include all packages in the "packages" directory.
+allowBuilds:
+  '@scarf/scarf': false
+  '@sentry/cli': true
+  cpu-features: true
+  esbuild: true
+  protobufjs: true
+  sharp: true
+  ssh2: true
+  unrs-resolver: true

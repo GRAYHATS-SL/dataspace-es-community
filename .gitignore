@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.turbo/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Runtime / temp
+.cache/
+.temp/
+tmp/
+*.tmp
+
+# Certificates and private keys
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.cert
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# TypeScript / Next.js generated
+*.tsbuildinfo
+next-env.d.ts
+
+# Debug logs
+yarn-debug.log*
+yarn-error.log*
+
+# Deploy / tooling
+.vercel
+sbom.json
+.playwright-mcp/
+
+# AI assistant / local tooling (not part of the project)
+.claude/
+CLAUDE.md
+graphify-out/
+.graphify*
+
+# Local scratch files
+Untitled*.md
+drift_*.txt
+
+# Editor
+.vscode/

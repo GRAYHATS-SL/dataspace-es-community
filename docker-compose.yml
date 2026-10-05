@@ -1,0 +1,82 @@
+services:
+  web:
+    container_name: template-web
+    image: node:22-alpine
+    working_dir: /workspace
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      # Internal network only — reviews-api is never exposed to the host or Internet.
+      REVIEWS_API_BASE_URL: "http://reviews-api:4000"
+    depends_on:
+      reviews-api:
+        condition: service_started
+    volumes:
+      - .:/workspace
+      - node_modules:/workspace/node_modules
+    command: >
+      sh -lc "
+        corepack enable &&
+        npm i -g corepack@latest &&
+        corepack prepare pnpm@11.1.1 --activate &&
+        pnpm --version &&
+        pnpm install &&
+        pnpm --filter web build &&
+        pnpm --filter web start
+      "
+
+  reviews-api:
+    container_name: template-reviews-api
+    image: node:22-alpine
+    working_dir: /workspace
+    # No ports published — only reachable from the compose network (apps/web proxies all traffic).
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+      DATABASE_URL: "postgres://${REVIEWS_DB_USER}:${REVIEWS_DB_PASSWORD}@reviews-db:5432/${REVIEWS_DB_NAME}"
+    depends_on:
+      reviews-db:
+        condition: service_healthy
+    volumes:
+      - .:/workspace
+      # Separate from web's node_modules volume — both containers run `pnpm install`
+      # independently (hoisted linker installs the whole workspace either way);
+      # sharing one volume would race the two concurrent installs.
+      - reviews_api_node_modules:/workspace/node_modules
+    command: >
+      sh -lc "
+        corepack enable &&
+        npm i -g corepack@latest &&
+        corepack prepare pnpm@11.1.1 --activate &&
+        pnpm --version &&
+        pnpm install &&
+        pnpm --filter reviews-api migrate &&
+        pnpm --filter reviews-api build &&
+        pnpm --filter reviews-api start
+      "
+
+  reviews-db:
+    container_name: template-reviews-db
+    image: postgres:16-alpine
+    # No ports published — only reviews-api talks to this database.
+    environment:
+      POSTGRES_USER: "${REVIEWS_DB_USER}"
+      POSTGRES_PASSWORD: "${REVIEWS_DB_PASSWORD}"
+      POSTGRES_DB: "${REVIEWS_DB_NAME}"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${REVIEWS_DB_USER} -d ${REVIEWS_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - reviews_db_data:/var/lib/postgresql/data
+
+volumes:
+  node_modules:
+  reviews_api_node_modules:
+  reviews_db_data:

@@ -1,0 +1,22 @@
+{
+  "name": "tmforum-marketplace-template",
+  "version": "0.1.0",
+  "description": "Monorepo template: Next.js web consuming TM Forum Open APIs + auxiliary Node.js API.",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter reviews-api dev"
+  },
+  "keywords": [
+    "template",
+    "monorepo",
+    "nextjs",
+    "tmforum",
+    "tanstack-query"
+  ],
+  "license": "AGPL-3.0-only",
+  "packageManager": "pnpm@11.1.1",
+  "engines": {
+    "node": "22.22.2"
+  }
+}

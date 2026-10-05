@@ -1,0 +1,10 @@
+#!/bin/sh
+# Scan staged files for secrets — skip deleted files that no longer exist on disk
+STAGED=$(git diff --cached --name-only --diff-filter=d)
+[ -n "$STAGED" ] && pnpm exec secretlint --secretlintrc .secretlintrc.json $STAGED
+
+# Lint and format staged files
+pnpm exec lint-staged
+
+# Full TypeScript type-check — catches cross-file type errors that lint-staged misses
+pnpm run type-check

@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: reviews-api
+  version: "0.1.0"
+  description: >
+    Example auxiliary API: comments on a TM Forum ProductOffering.
+    Internal service — traffic is proxied server-side by `apps/web`.
+servers:
+  - url: http://localhost:4000
+    description: Local development
+
+tags:
+  - name: comments
+    description: Comments on a ProductOffering
+
+paths:
+  /offerings/{offeringId}/comments:
+    get:
+      tags: [comments]
+      summary: List comments of an offering
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+      responses:
+        "200":
+          description: Comments of the offering
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+    post:
+      tags: [comments]
+      summary: Create a comment on an offering
+      description: >
+        Requires an internal token issued by `apps/web`.
+        Here you define your authorization rules.
+      security:
+        - InternalToken: []
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewComment"
+      responses:
+        "201":
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400":
+          $ref: "#/components/responses/InvalidPayload"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  /offerings/{offeringId}/comments/{commentId}:
+    get:
+      tags: [comments]
+      summary: Get a comment of an offering
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+        - $ref: "#/components/parameters/CommentId"
+      responses:
+        "200":
+          description: The comment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      tags: [comments]
+      summary: Partially update a comment
+      description: >
+        Requires an internal token issued by `apps/web`. Omitted fields are left untouched;
+        `body: null` clears the body.
+        Here you define your authorization rules.
+      security:
+        - InternalToken: []
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+        - $ref: "#/components/parameters/CommentId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentPatch"
+      responses:
+        "200":
+          description: Comment updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400":
+          $ref: "#/components/responses/InvalidPayload"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      tags: [comments]
+      summary: Delete a comment
+      description: >
+        Requires an internal token issued by `apps/web`.
+        Here you define your authorization rules.
+      security:
+        - InternalToken: []
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+        - $ref: "#/components/parameters/CommentId"
+      responses:
+        "204":
+          description: Comment deleted
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  parameters:
+    OfferingId:
+      name: offeringId
+      in: path
+      required: true
+      description: TM Forum `ProductOffering` id
+      schema:
+        type: string
+        example: "offering-1"
+    CommentId:
+      name: commentId
+      in: path
+      required: true
+      description: Comment id
+      schema:
+        type: string
+        format: uuid
+
+  securitySchemes:
+    InternalToken:
+      type: http
+      scheme: bearer
+      description: Short-lived internal token signed by `apps/web` with `TOKEN_SECRET`.
+
+  responses:
+    InvalidPayload:
+      description: Invalid payload
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Forbidden:
+      description: Missing or invalid internal token
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    NotFound:
+      description: Comment not found in this offering
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        offeringId:
+          type: string
+          example: "offering-1"
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        body:
+          type: string
+          nullable: true
+          maxLength: 1000
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required: [id, offeringId, rating, body, createdAt, updatedAt]
+
+    NewComment:
+      type: object
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        body:
+          type: string
+          nullable: true
+          maxLength: 1000
+      required: [rating]
+
+    CommentPatch:
+      type: object
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        body:
+          type: string
+          nullable: true
+          maxLength: 1000
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+      required: [error, status]

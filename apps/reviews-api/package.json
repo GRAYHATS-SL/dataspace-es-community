@@ -1,0 +1,41 @@
+{
+  "name": "reviews-api",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": "22.22.2"
+  },
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "node --env-file-if-exists=.env dist/index.js",
+    "type-check": "tsc --noEmit",
+    "migrate": "tsx --env-file-if-exists=.env src/infrastructure/db/migrate.ts",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.7",
+    "express": "^5.1.0",
+    "js-yaml": "^5.2.1",
+    "pg": "^8.16.3",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/node": "^22",
+    "@types/pg": "^8.15.5",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@vitest/coverage-v8": "^4.1.6",
+    "@testcontainers/postgresql": "^11.0.3",
+    "@types/supertest": "^6.0.3",
+    "drizzle-kit": "^0.31.9",
+    "supertest": "^7.1.4",
+    "tsc-alias": "^1.9.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5",
+    "vitest": "^4.1.6"
+  }
+}
