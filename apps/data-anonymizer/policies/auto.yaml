@@ -1,0 +1,28 @@
+# Politica "auto": anonimizacion generica sin configurar nada.
+#
+# - Cada texto pasa por el detector de PII (nombres, direcciones, emails,
+#   telefonos, IBAN, tarjetas, DNI/NIE, IP, URL, matriculas, CP, coordenadas;
+#   y con NER_MODEL, tambien lugares y organizaciones).
+# - El nombre de la clave cuenta: "email", "apellidos", "iban", "lat",
+#   "fechaNacimiento"... se tratan como tales aunque el valor no tenga el
+#   formato esperado.
+# - Numeros y booleanos se dejan tal cual (salvo coordenadas por su clave).
+#
+# Es un buen punto de partida, pero la deteccion automatica nunca es perfecta:
+# para datos que vas a publicar, escribe una politica con reglas explicitas
+# (ver ejemplo.yaml) o usa estricta.yaml.
+
+description: Deteccion automatica de PII en todos los textos
+
+defaults:
+  strings: detect
+  numbers: keep
+  booleans: keep
+  key_hints: true
+  coordinates_decimals: 2      # ~1 km
+  birthdate_precision: year
+
+detection:
+  ner: auto                    # usa NER si NER_MODEL esta configurado
+  replacement: label           # "[NOMBRE]", "[EMAIL]"...
+  label_format: "[{label}]"

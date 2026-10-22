@@ -1,0 +1,1250 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Transaction Log",
+    "version": "0.1.0",
+    "description": "Servicio de **registro de operaciones de pedido con sello de tiempo en la blockchain**.\n\nCada operación recibida (pedido + oferta + comprador) se convierte en un hash con *salt*; ese hash se\nregistra en el contrato **HashTimestamp** , que certifica que la operación existía en esa fecha,\ny el registro completo se guarda en MongoDB usando el hash como identificador (`_id`).\n\n## Flujo de `POST /transactions`\n\n1. Se valida el JSON: exactamente `id_product_order`, `id_product_offer` e `id_buyer`.\n2. Si el `id_product_order` ya está registrado → **409** con el registro existente.\n3. Se genera un *salt* aleatorio de 32 bytes y se calcula el hash (ver abajo).\n4. Se guarda el registro en la base de datos con estado `pending`.\n5. Se registra el hash en la blockchain y **se espera a que quede confirmado en un bloque**\n  \n6. Se actualiza el registro a `confirmed` con la transacción, el bloque y su fecha → **201**.\n\nSi la blockchain falla en el paso 5, el registro **no se pierde**: queda en estado `failed` con el error\ny la respuesta es **502**. Se puede reintentar con `POST /transactions/{hash}/retry` (mismo hash y salt).\n\n## Cómo se calcula el hash (`hash_scheme = sha256-jcs-salt32-v1`)\n\n```\ncanonical = JCS(json)              RFC 8785: claves ordenadas, sin espacios\nsalt      = 32 bytes aleatorios    uno nuevo por operación\nhash      = SHA-256( salt || UTF-8(canonical) )\n```\n\nEjemplo de `canonical` para la operación de ejemplo:\n`{\"id_buyer\":\"BUY-777\",\"id_product_offer\":\"OFF-500\",\"id_product_order\":\"ORD-DEMO-0001\"}`\n\nCualquiera que tenga los tres campos y el salt puede recalcular el hash con cualquier lenguaje y\ncomprobarlo en la blockchain: por eso el salt se guarda y se devuelve. El *salt* evita que, viendo solo\nel hash público en la blockchain, alguien pueda adivinar los identificadores probando combinaciones.\n\n## Estados del sellado (`blockchain.status`)\n\n| Estado | Significado |\n|---|---|\n| `pending` | Guardado; la transacción se está enviando o esperando confirmación |\n| `confirmed` | Sellado en un bloque. `block_timestamp` es la fecha certificada |\n| `failed` | La blockchain falló. Ver `blockchain.error`. Reintentable |\n\n## Verificación\n\n- `GET /transactions/{hash}/verify` comprueba un registro del log: recalcula el hash con sus datos y salt\n  (detecta si la base de datos se ha alterado) y lo busca en la blockchain.\n- `POST /transactions/verify` comprueba datos aportados por un tercero (campos + salt) sin fiarse del log.\n\n## Modos de blockchain\n\n- **`real`**: registra de verdad en una red blockchain basada en etherium \n- **`mock`**: blockchain simulada en memoria para desarrollo. Se pierde al reiniciar y **no tiene valor\n  probatorio**; los registros indican `network: \"mock\"`.\n\n## Errores\n\nTodas las respuestas de error tienen el formato `ErrorResponse` con un `code` estable:\n\n| HTTP | code | Cuándo |\n|---|---|---|\n| 400 | `VALIDATION_ERROR` | JSON inválido, campos que faltan o sobran, valores vacíos |\n| 401 | `UNAUTHORIZED` | Falta o es incorrecta la cabecera `x-api-key` (solo si el servicio tiene `API_KEY`) |\n| 404 | `NOT_FOUND` | No existe un registro con ese hash |\n| 409 | `DUPLICATE_ORDER` | El `id_product_order` ya está registrado |\n| 502 | `BLOCKCHAIN_UNAVAILABLE` | No se puede contactar con la red blockchain |\n| 502 | `CONFIRMATION_TIMEOUT` | La transacción no se confirmó a tiempo (puede confirmarse después: usar *retry*) |\n| 502 | `MISSING_ROLE` | La cuenta del servicio no tiene `HASH_TIMESTAMP_ROLE` en el contrato |\n| 502 | `CONTRACT_PAUSED` | El contrato HashTimestamp está pausado |\n| 502 | `TRANSACTION_REVERTED` | La blockchain rechazó la transacción por otro motivo |\n| 500 | `INTERNAL_ERROR` | Error inesperado (ver logs del servicio) |"
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "Solo se exige si el servicio arranca con la variable API_KEY definida."
+      }
+    },
+    "schemas": {
+      "BlockchainInfo": {
+        "type": "object",
+        "required": [
+          "status",
+          "network",
+          "contract_address",
+          "tx_hash",
+          "block_number",
+          "block_timestamp",
+          "error"
+        ],
+        "properties": {
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "pending"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "confirmed"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "failed"
+                ]
+              }
+            ],
+            "description": "`pending`: guardado y enviándose a la blockchain. `confirmed`: sellado en un bloque. `failed`: la blockchain falló; el registro existe y se puede reintentar con POST /transactions/{hash}/retry."
+          },
+          "network": {
+            "type": "string",
+            "description": "Red en la que se registró. \"mock\" significa blockchain simulada (sin valor probatorio).",
+            "examples": [
+              "besu-local (chainId 11073)"
+            ]
+          },
+          "contract_address": {
+            "anyOf": [
+              {
+                "type": "string",
+                "examples": [
+                  "0x98717d1775AE066A18fad55142A5A85EbfA3E067"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Proxy HashTimestamp de la red donde está registrado el hash. null en modo mock."
+          },
+          "tx_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Hash de la transacción enviada a la blockchain. Se guarda en cuanto se envía, así que puede tener valor aunque status sea pending o failed (p. ej. tras un CONFIRMATION_TIMEOUT); null si nunca se llegó a enviar."
+          },
+          "block_number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Bloque en el que quedó registrado. null si no está confirmado."
+          },
+          "block_timestamp": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Fecha del bloque (UTC): es la fecha que certifica la blockchain. null si no está confirmado."
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Último error al registrar en la blockchain (si status = failed)."
+          }
+        },
+        "title": "BlockchainInfo",
+        "description": "Estado del sellado del hash en la blockchain.",
+        "examples": [
+          {
+            "status": "confirmed",
+            "network": "besu-local (chainId 11073)",
+            "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
+            "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
+            "block_number": 19803,
+            "block_timestamp": "2026-10-15T15:29:09.000Z",
+            "error": null
+          }
+        ]
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "required": [
+          "hash",
+          "id_product_order",
+          "id_product_offer",
+          "id_buyer",
+          "salt",
+          "hash_scheme",
+          "created_at",
+          "updated_at",
+          "blockchain"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string",
+            "description": "Identificador de la operación: SHA-256(salt || JCS(json)) en hex con prefijo 0x. Es el valor registrado en la blockchain.",
+            "examples": [
+              "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b"
+            ]
+          },
+          "id_product_order": {
+            "type": "string",
+            "description": "Pedido, tal como llegó."
+          },
+          "id_product_offer": {
+            "type": "string",
+            "description": "Oferta, tal como llegó."
+          },
+          "id_buyer": {
+            "type": "string",
+            "description": "Comprador, tal como llegó."
+          },
+          "salt": {
+            "type": "string",
+            "description": "Salt aleatorio de 32 bytes usado en el hash. Imprescindible para verificar la operación en el futuro. Trátalo como dato sensible: con el salt y el hash público se pueden comprobar valores candidatos de los campos.",
+            "examples": [
+              "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990"
+            ]
+          },
+          "hash_scheme": {
+            "type": "string",
+            "description": "Versión de la receta de hash. Ver la sección \"Cómo se calcula el hash\".",
+            "examples": [
+              "sha256-jcs-salt32-v1"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Momento (UTC) en que el servicio recibió la operación."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Última modificación del registro (UTC)."
+          },
+          "blockchain": {
+            "$ref": "#/components/schemas/BlockchainInfo"
+          }
+        },
+        "title": "TransactionResponse",
+        "description": "Registro de una operación en el log.",
+        "examples": [
+          {
+            "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "id_product_order": "ORD-DEMO-0001",
+            "id_product_offer": "OFF-500",
+            "id_buyer": "BUY-777",
+            "salt": "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990",
+            "hash_scheme": "sha256-jcs-salt32-v1",
+            "created_at": "2026-10-15T15:29:07.929Z",
+            "updated_at": "2026-10-15T15:29:09.270Z",
+            "blockchain": {
+              "status": "confirmed",
+              "network": "besu-local (chainId 11073)",
+              "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
+              "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
+              "block_number": 19803,
+              "block_timestamp": "2026-10-15T15:29:09.000Z",
+              "error": null
+            }
+          }
+        ]
+      },
+      "TransactionList": {
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionResponse"
+            },
+            "description": "Registros, del más reciente al más antiguo."
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total de registros que cumplen el filtro (sin paginar)."
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          }
+        },
+        "title": "TransactionList",
+        "examples": [
+          {
+            "items": [
+              {
+                "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+                "id_product_order": "ORD-DEMO-0001",
+                "id_product_offer": "OFF-500",
+                "id_buyer": "BUY-777",
+                "salt": "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990",
+                "hash_scheme": "sha256-jcs-salt32-v1",
+                "created_at": "2026-10-15T15:29:07.929Z",
+                "updated_at": "2026-10-15T15:29:09.270Z",
+                "blockchain": {
+                  "status": "confirmed",
+                  "network": "besu-local (chainId 11073)",
+                  "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
+                  "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
+                  "block_number": 19803,
+                  "block_timestamp": "2026-10-15T15:29:09.000Z",
+                  "error": null
+                }
+              }
+            ],
+            "total": 1,
+            "limit": 20,
+            "offset": 0
+          }
+        ]
+      },
+      "VerificationResponse": {
+        "type": "object",
+        "required": [
+          "hash",
+          "verified",
+          "hash_matches",
+          "on_chain",
+          "on_chain_timestamp",
+          "registered_in_log",
+          "checked_network",
+          "record"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string",
+            "description": "Hash comprobado."
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "true si la operación queda demostrada: el hash está en la blockchain (y, al verificar un registro del log, además los datos guardados reproducen el hash)."
+          },
+          "hash_matches": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Solo al verificar un registro del log: true si recalcular el hash con los campos y el salt guardados da el mismo hash (false indicaría que el registro de la base de datos se ha alterado). null al verificar datos aportados."
+          },
+          "on_chain": {
+            "type": "boolean",
+            "description": "true si el hash está registrado en la blockchain consultada."
+          },
+          "on_chain_timestamp": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Fecha (UTC) que la blockchain certifica para el hash. null si no está registrado."
+          },
+          "registered_in_log": {
+            "type": "boolean",
+            "description": "true si existe un registro con ese hash en el log de este servicio."
+          },
+          "checked_network": {
+            "type": "string",
+            "description": "Red blockchain consultada en esta verificación."
+          },
+          "record": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TransactionResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Registro del log con ese hash, si existe."
+          }
+        },
+        "title": "VerificationResponse",
+        "examples": [
+          {
+            "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "verified": true,
+            "hash_matches": true,
+            "on_chain": true,
+            "on_chain_timestamp": "2026-10-15T15:29:09.000Z",
+            "registered_in_log": true,
+            "checked_network": "besu-local (chainId 11073)",
+            "record": {
+              "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+              "id_product_order": "ORD-DEMO-0001",
+              "id_product_offer": "OFF-500",
+              "id_buyer": "BUY-777",
+              "salt": "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990",
+              "hash_scheme": "sha256-jcs-salt32-v1",
+              "created_at": "2026-10-15T15:29:07.929Z",
+              "updated_at": "2026-10-15T15:29:09.270Z",
+              "blockchain": {
+                "status": "confirmed",
+                "network": "besu-local (chainId 11073)",
+                "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
+                "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
+                "block_number": 19803,
+                "block_timestamp": "2026-10-15T15:29:09.000Z",
+                "error": null
+              }
+            }
+          }
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "statusCode",
+          "error",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "examples": [
+              409
+            ]
+          },
+          "error": {
+            "type": "string",
+            "description": "Texto estándar del código HTTP.",
+            "examples": [
+              "Conflict"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "Código estable para tratar el error por programa: VALIDATION_ERROR, UNAUTHORIZED, NOT_FOUND, DUPLICATE_ORDER, HASH_ALREADY_EXISTS, MISSING_ROLE, CONTRACT_PAUSED, CONFIRMATION_TIMEOUT, TRANSACTION_REVERTED, BLOCKCHAIN_UNAVAILABLE, INTERNAL_ERROR.",
+            "examples": [
+              "DUPLICATE_ORDER"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "Descripción legible del error."
+          },
+          "record": {
+            "$ref": "#/components/schemas/TransactionResponse"
+          }
+        },
+        "title": "ErrorResponse",
+        "description": "Formato común de todas las respuestas de error.",
+        "examples": [
+          {
+            "statusCode": 409,
+            "error": "Conflict",
+            "code": "DUPLICATE_ORDER",
+            "message": "El pedido ORD-DEMO-0001 ya está registrado con el hash 0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "record": {
+              "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+              "id_product_order": "ORD-DEMO-0001",
+              "id_product_offer": "OFF-500",
+              "id_buyer": "BUY-777",
+              "salt": "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990",
+              "hash_scheme": "sha256-jcs-salt32-v1",
+              "created_at": "2026-10-15T15:29:07.929Z",
+              "updated_at": "2026-10-15T15:29:09.270Z",
+              "blockchain": {
+                "status": "confirmed",
+                "network": "besu-local (chainId 11073)",
+                "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
+                "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
+                "block_number": 19803,
+                "block_timestamp": "2026-10-15T15:29:09.000Z",
+                "error": null
+              }
+            }
+          }
+        ]
+      },
+      "HealthResponse": {
+        "type": "object",
+        "required": [
+          "status",
+          "database",
+          "blockchain"
+        ],
+        "properties": {
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "ok"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "degraded"
+                ]
+              }
+            ],
+            "description": "\"ok\" si base de datos y blockchain responden; \"degraded\" si alguna falla (HTTP 503)."
+          },
+          "database": {
+            "type": "object",
+            "required": [
+              "ok",
+              "detail"
+            ],
+            "properties": {
+              "ok": {
+                "type": "boolean"
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          },
+          "blockchain": {
+            "type": "object",
+            "required": [
+              "ok",
+              "mode",
+              "network",
+              "detail"
+            ],
+            "properties": {
+              "ok": {
+                "type": "boolean"
+              },
+              "mode": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "real"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "mock"
+                    ]
+                  }
+                ]
+              },
+              "network": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": "HealthResponse"
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Estado del servicio",
+        "tags": [
+          "Health"
+        ],
+        "description": "Comprueba la conexión con la base de datos y con la blockchain. No requiere x-api-key.",
+        "responses": {
+          "200": {
+            "description": "Todo funciona.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "La base de datos o la blockchain no responden.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "operationId": "registerTransaction",
+        "summary": "Registrar una operación",
+        "tags": [
+          "Transactions"
+        ],
+        "description": "Hashea la operación con un salt nuevo, guarda el registro y sella el hash en la blockchain, **esperando a la confirmación** antes de responder (≈ 2 s). Ver el flujo completo en la descripción general.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id_product_order",
+                  "id_product_offer",
+                  "id_buyer"
+                ],
+                "properties": {
+                  "id_product_order": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador del pedido. Es único: un mismo pedido solo se puede registrar una vez (un segundo envío devuelve 409).",
+                    "examples": [
+                      "ORD-DEMO-0001"
+                    ]
+                  },
+                  "id_product_offer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador de la oferta de producto.",
+                    "examples": [
+                      "OFF-500"
+                    ]
+                  },
+                  "id_buyer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador del comprador.",
+                    "examples": [
+                      "BUY-777"
+                    ]
+                  }
+                },
+                "title": "TransactionInput",
+                "additionalProperties": false,
+                "description": "Operación a registrar. Deben venir exactamente estos tres campos, todos strings no vacíos de hasta 255 caracteres, sin espacios al principio ni al final. Cualquier campo adicional se rechaza con 400, porque el hash se calcula exactamente sobre estos tres campos."
+              },
+              "example": {
+                "id_product_order": "ORD-DEMO-0001",
+                "id_product_offer": "OFF-500",
+                "id_buyer": "BUY-777"
+              }
+            }
+          },
+          "description": "Operación a registrar. Deben venir exactamente estos tres campos, todos strings no vacíos de hasta 255 caracteres, sin espacios al principio ni al final. Cualquier campo adicional se rechaza con 400, porque el hash se calcula exactamente sobre estos tres campos."
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Operación registrada y sellada en la blockchain (blockchain.status = confirmed).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "El id_product_order ya está registrado (DUPLICATE_ORDER). El campo record contiene el registro existente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "El registro se guardó pero la blockchain falló (BLOCKCHAIN_UNAVAILABLE, CONFIRMATION_TIMEOUT, MISSING_ROLE, CONTRACT_PAUSED, TRANSACTION_REVERTED). El campo record contiene el registro en estado failed; se puede reintentar con POST /transactions/{hash}/retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "listTransactions",
+        "summary": "Buscar operaciones",
+        "tags": [
+          "Transactions"
+        ],
+        "description": "Lista paginada de registros, del más reciente al más antiguo, con filtros opcionales por coincidencia exacta.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255,
+              "pattern": "^\\S(.*\\S)?$"
+            },
+            "example": "ORD-DEMO-0001",
+            "in": "query",
+            "name": "id_product_order",
+            "required": false,
+            "description": "Filtra por pedido (coincidencia exacta)."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255,
+              "pattern": "^\\S(.*\\S)?$"
+            },
+            "example": "OFF-500",
+            "in": "query",
+            "name": "id_product_offer",
+            "required": false,
+            "description": "Filtra por oferta (coincidencia exacta)."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255,
+              "pattern": "^\\S(.*\\S)?$"
+            },
+            "example": "BUY-777",
+            "in": "query",
+            "name": "id_buyer",
+            "required": false,
+            "description": "Filtra por comprador (coincidencia exacta)."
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "pending"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "confirmed"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "failed"
+                  ]
+                }
+              ]
+            },
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "description": "Filtra por estado en la blockchain."
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            },
+            "in": "query",
+            "name": "limit",
+            "required": true,
+            "description": "Número máximo de resultados (1-100)."
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "in": "query",
+            "name": "offset",
+            "required": true,
+            "description": "Resultados a saltar, para paginar."
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Página de resultados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/verify": {
+      "post": {
+        "operationId": "verifyPayload",
+        "summary": "Verificar datos aportados (campos + salt)",
+        "tags": [
+          "Verification"
+        ],
+        "description": "Para quien tiene los datos de una operación y su salt (p. ej. un auditor): recalcula el hash y comprueba en la blockchain si está registrado y desde qué fecha. No se fía del log; solo indica si además existe en él. Responde 200 tanto si verifica como si no: mirar el campo verified. Solo lectura, no gasta gas.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id_product_order",
+                  "id_product_offer",
+                  "id_buyer",
+                  "salt"
+                ],
+                "properties": {
+                  "id_product_order": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador del pedido. Es único: un mismo pedido solo se puede registrar una vez (un segundo envío devuelve 409).",
+                    "examples": [
+                      "ORD-DEMO-0001"
+                    ]
+                  },
+                  "id_product_offer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador de la oferta de producto.",
+                    "examples": [
+                      "OFF-500"
+                    ]
+                  },
+                  "id_buyer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "pattern": "^\\S(.*\\S)?$",
+                    "description": "Identificador del comprador.",
+                    "examples": [
+                      "BUY-777"
+                    ]
+                  },
+                  "salt": {
+                    "type": "string",
+                    "pattern": "^0x[0-9a-fA-F]{64}$",
+                    "description": "Salt con el que se calculó el hash (32 bytes en hex con prefijo 0x), tal como lo devolvió el registro.",
+                    "examples": [
+                      "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990"
+                    ]
+                  }
+                },
+                "title": "VerifyPayloadInput",
+                "additionalProperties": false,
+                "description": "Datos de una operación + su salt, aportados por quien quiere verificarla (p. ej. un auditor). El servicio recalcula el hash y lo busca en la blockchain sin fiarse del log."
+              },
+              "example": {
+                "id_product_order": "ORD-DEMO-0001",
+                "id_product_offer": "OFF-500",
+                "id_buyer": "BUY-777",
+                "salt": "0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990"
+              }
+            }
+          },
+          "description": "Datos de una operación + su salt, aportados por quien quiere verificarla (p. ej. un auditor). El servicio recalcula el hash y lo busca en la blockchain sin fiarse del log."
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado de la verificación.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "No se pudo consultar la blockchain (BLOCKCHAIN_UNAVAILABLE).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{hash}": {
+      "get": {
+        "operationId": "getTransaction",
+        "summary": "Consultar una operación por su hash",
+        "tags": [
+          "Transactions"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{64}$"
+            },
+            "example": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "in": "path",
+            "name": "hash",
+            "required": true,
+            "description": "Hash de la operación: 0x + 64 caracteres hexadecimales (se aceptan mayúsculas, se normaliza a minúsculas)."
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registro encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No existe ningún registro con ese hash (NOT_FOUND).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{hash}/verify": {
+      "get": {
+        "operationId": "verifyTransaction",
+        "summary": "Verificar una operación del log",
+        "tags": [
+          "Verification"
+        ],
+        "description": "Recalcula el hash con los campos y el salt guardados en la base de datos (hash_matches = false indicaría que el registro se ha alterado) y comprueba en la blockchain si está registrado y con qué fecha. Responde 200 tanto si verifica como si no: mirar el campo verified. Solo lectura, no gasta gas.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{64}$"
+            },
+            "example": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "in": "path",
+            "name": "hash",
+            "required": true,
+            "description": "Hash de la operación: 0x + 64 caracteres hexadecimales (se aceptan mayúsculas, se normaliza a minúsculas)."
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado de la verificación.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No existe ningún registro con ese hash (NOT_FOUND).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "No se pudo consultar la blockchain (BLOCKCHAIN_UNAVAILABLE).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{hash}/retry": {
+      "post": {
+        "operationId": "retryTransaction",
+        "summary": "Reintentar el sellado de una operación",
+        "tags": [
+          "Transactions"
+        ],
+        "description": "Para registros en estado failed o pending. Primero comprueba si un intento anterior llegó a la blockchain (p. ej. tras un CONFIRMATION_TIMEOUT) y, si es así, solo actualiza el registro; si no, vuelve a enviar el mismo hash. Si el registro ya está confirmed lo devuelve sin hacer nada (idempotente).",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{64}$"
+            },
+            "example": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
+            "in": "path",
+            "name": "hash",
+            "required": true,
+            "description": "Hash de la operación: 0x + 64 caracteres hexadecimales (se aceptan mayúsculas, se normaliza a minúsculas)."
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registro confirmado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida (VALIDATION_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Falta o es incorrecta la cabecera x-api-key (UNAUTHORIZED). Solo si el servicio tiene API_KEY.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No existe ningún registro con ese hash (NOT_FOUND).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error inesperado (INTERNAL_ERROR).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "La blockchain volvió a fallar; el registro sigue en estado failed (ver record).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Este servicio"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Transactions",
+      "description": "Registro y consulta de operaciones"
+    },
+    {
+      "name": "Verification",
+      "description": "Comprobación de operaciones contra la blockchain"
+    },
+    {
+      "name": "Health",
+      "description": "Estado del servicio"
+    }
+  ]
+}

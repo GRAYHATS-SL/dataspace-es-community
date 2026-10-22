@@ -1,0 +1,20 @@
+services:
+  anonymizer:
+    build:
+      context: .
+      args:
+        WITH_NER: "false"          # "true" para instalar spaCy (y poner NER_MODEL en .env)
+        SPACY_MODEL: es_core_news_md
+    image: data-anonymizer:latest
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      # Tus politicas: edita los YAML y reinicia el contenedor.
+      - ./policies:/app/policies:ro
+    read_only: true
+    tmpfs:
+      - /tmp                       # subidas grandes y ficheros temporales de ffmpeg
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped

@@ -14,7 +14,7 @@ const RECEIPT = {
   hash: '0x4e54',
   salt: '0x3bbd',
   hash_scheme: 'sha256-jcs-salt32-v1',
-  blockchain: { status: 'confirmed', network: 'isbe (chainId 11073)', error: null },
+  blockchain: { status: 'confirmed', network: 'real (chainId 11073)', error: null },
 };
 
 const res = (data: unknown, status = 201) => ({

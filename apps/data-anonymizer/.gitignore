@@ -1,0 +1,22 @@
+# Entorno
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tests y herramientas
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Editores y sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

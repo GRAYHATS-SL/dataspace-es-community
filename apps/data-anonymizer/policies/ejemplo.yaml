@@ -1,0 +1,107 @@
+# Politica de ejemplo: un export de clientes y pedidos (examples/clientes.json).
+# Copia este fichero, renombralo y adaptalo a tu JSON. El nombre del fichero
+# (sin .yaml) es el nombre de la politica: POST /v1/json?policy=ejemplo
+#
+# ── Como se decide que hacer con cada valor ────────────────────────────────
+# 1. La PRIMERA regla de `fields` cuya ruta coincide. Si la ruta apunta a un
+#    objeto o una lista, la accion se aplica a todo lo que contiene.
+# 2. Si ninguna coincide y `defaults.key_hints` esta activo: el nombre de la
+#    clave ("email", "telefono", "apellidos", "iban", "lat"...).
+# 3. Si tampoco: `defaults.strings` / `numbers` / `booleans`.
+#
+# ── Rutas ──────────────────────────────────────────────────────────────────
+#   cliente.email          clave exacta
+#   pedidos[*].tarjeta     cualquier elemento de la lista
+#   pedidos[0].tarjeta     solo el primero
+#   cliente.*              cualquier clave dentro de "cliente"
+#   **.email               "email" a cualquier profundidad
+#   ["clave.con.puntos"]   claves con caracteres especiales
+#   Los indices son opcionales: pedidos.tarjeta == pedidos[*].tarjeta
+#
+# ── Acciones ───────────────────────────────────────────────────────────────
+#   keep       se deja tal cual
+#   drop       se elimina la clave (o el elemento de la lista)
+#   redact     se sustituye por la etiqueta:            "[EMAIL]"
+#   replace    se sustituye por un valor fijo (value):   null, "", 0...
+#   pseudo     alias estable con prefijo opcional:       "CLI-4KJ7QAXM"
+#   pseudo_id  alias que conserva la forma del id:       "cli-K3D9XQ2M-000123"
+#   hash       HMAC-SHA256 en hexadecimal (length opcional)
+#   mask       enmascarado (keep_start, keep_end, mask_char)
+#   detect     busca PII dentro del texto y cambia solo eso
+#   round      redondea numeros (decimals)
+#   date       deja solo el año/mes/dia (precision: year|month|day)
+#
+# Los alias (pseudo, pseudo_id, hash) son deterministas: el mismo valor da el
+# mismo alias en todas las peticiones mientras ANON_SECRET no cambie. Asi se
+# pueden cruzar datos (el cliente de un pedido con su ficha) sin ver el
+# original. Usa `namespace` distintos si NO quieres que se puedan cruzar.
+
+description: Ejemplo comentado para un export de clientes y pedidos
+
+defaults:
+  strings: detect          # keep | detect | redact | drop
+  numbers: keep            # keep | redact | drop
+  booleans: keep
+  key_hints: true
+  coordinates_decimals: 2
+  birthdate_precision: year
+
+detection:
+  # Que buscar en texto libre (quita las que no te interesen):
+  entities: [NOMBRE, DIRECCION, EMAIL, TELEFONO, IBAN, TARJETA, DOC_IDENTIDAD,
+             IP, URL, MATRICULA, CODIGO_POSTAL, COORDENADAS, LUGAR, ORGANIZACION]
+  ner: auto                # auto | on (falla si no hay modelo) | off
+  replacement: pseudo      # label "[NOMBRE]" | pseudo "NOMBRE-4KJ7QAXM" | mask "L**** G****"
+  label_format: "[{label}]"
+  min_score: 0.5
+  # Terminos que se censuran siempre (nombres internos, proyectos, apellidos...):
+  extra_terms: ["Proyecto Atlas"]
+  # Terminos que NUNCA se censuran (falsos positivos conocidos):
+  allow_terms: ["Rosa Mosqueta"]
+
+fields:
+  # Excepciones concretas primero: el id del cliente se mantiene cruzable
+  # con el de los pedidos gracias al mismo namespace.
+  - path: cliente.id
+    action: pseudo_id
+    namespace: clientes
+    preserve: [cli]
+
+  - path: pedidos[*].clienteId
+    action: pseudo_id
+    namespace: clientes
+    preserve: [cli]
+
+  - path: cliente.nombre
+    action: pseudo
+    prefix: "CLI-"
+
+  - path: cliente.email
+    action: mask
+    keep_start: 1
+    keep_end: 3            # "l****.*****@*******.com": se ve el dominio de primer nivel
+
+  - path: cliente.fechaNacimiento
+    action: date
+    precision: year
+
+  - path: "**.tarjeta"
+    action: mask
+    keep_end: 4            # "**** **** **** 1111"
+
+  - path: cliente.dni
+    action: hash
+    length: 16
+
+  - path: cliente.ubicacion
+    action: round
+    decimals: 1            # ~11 km
+
+  - path: interno
+    action: drop           # todo el bloque fuera
+
+  - path: pedidos[*].estado
+    action: keep           # categoria, no PII: ni siquiera se analiza
+
+  - path: "**.notas"
+    action: detect

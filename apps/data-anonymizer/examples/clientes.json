@@ -1,0 +1,29 @@
+{
+  "cliente": {
+    "id": "cli-laura-gomez-000123",
+    "nombre": "Laura Gómez Ruiz",
+    "email": "laura.gomez@example.com",
+    "telefono": "+34 612 345 678",
+    "dni": "12345678Z",
+    "direccion": "Calle Mayor 12, 3º B, 28013 Madrid",
+    "fechaNacimiento": "1985-04-12",
+    "ubicacion": { "lat": 40.416775, "lng": -3.70379 },
+    "vip": true
+  },
+  "pedidos": [
+    {
+      "clienteId": "cli-laura-gomez-000123",
+      "fecha": "2026-09-30T18:22:05Z",
+      "importe": 59.9,
+      "moneda": "EUR",
+      "tarjeta": "4111 1111 1111 1111",
+      "estado": "enviado",
+      "notas": "Entregar a D. Alberto Ruiz en Avenida de la Constitución 5. Tel. 957 49 67 41"
+    }
+  ],
+  "notas": "Cliente del Proyecto Atlas. Reclamación enviada desde 192.168.1.20 a soporte@example.com",
+  "interno": {
+    "operador": "jperez",
+    "ip": "10.0.0.7"
+  }
+}

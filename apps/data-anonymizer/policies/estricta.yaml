@@ -1,0 +1,30 @@
+# Politica "estricta": lista blanca.
+#
+# Todo texto que no este en `fields` con `keep` se censura entero. Es la
+# opcion segura cuando el JSON puede traer campos nuevos que nadie ha
+# revisado: un campo nuevo sale como "[REDACTADO]" en vez de filtrarse.
+#
+# Adapta la lista de `keep` a los campos que sepas que no contienen PII.
+
+description: Lista blanca - todo texto no declarado se censura
+
+defaults:
+  strings: redact
+  numbers: keep
+  booleans: keep
+  key_hints: true
+
+fields:
+  - path: "**.id"
+    action: pseudo_id
+  - path: "**.estado"
+    action: keep
+  - path: "**.tipo"
+    action: keep
+  - path: "**.categoria"
+    action: keep
+  - path: "**.moneda"
+    action: keep
+  - path: "**.fecha"
+    action: date
+    precision: day

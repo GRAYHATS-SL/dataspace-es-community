@@ -1,0 +1,40 @@
+# Desarrollo:        docker compose up -d mongo     (solo MongoDB; el servicio con npm run dev)
+# Todo en Docker:    docker compose --profile app up -d --build
+services:
+  mongo:
+    image: mongo:8.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: transaction_log
+      MONGO_INITDB_ROOT_PASSWORD: transaction_log
+    ports:
+      # 27018 en el host para no chocar con otros MongoDB locales
+      - "27018:27017"
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: [ "CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok" ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  api:
+    profiles: [ "app" ]
+    build: .
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://transaction_log:transaction_log@mongo:27017/?authSource=admin
+      # La red local publica el RPC en el host
+      BLOCKCHAIN_RPC_URL: http://host.docker.internal:8545
+      NODE_ENV: production
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "3000:3000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mongodata:
