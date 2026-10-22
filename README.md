@@ -39,6 +39,8 @@ Organización de carpetas y archivos principales del proyecto.
 dataspace/
 ├── 📁 apps/                          # Aplicaciones principales
 │   └── 🌐 web/                      # Aplicación Web Frontend
+│   └── 🥷🏻 data-anonymizer/          # Recursos para anonimizar PII
+│   └── 🧾 transaction-log/          # Base de datos de hashes registrados en la blockchain
 ├── 📋 package.json                   # Configuración raíz del monorepo
 ├── 🔒 pnpm-workspace.yaml           # Configuración workspace de PNPM
 └── 📖 README.md                     # Esta documentación
