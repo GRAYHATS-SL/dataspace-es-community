@@ -1,0 +1,30 @@
+{
+  "name": "dataspace",
+  "version": "0.14.0",
+  "description": "DATASPACE.ES es un ecosistema basado en espacios de datos dirigido a fomentar la compartición, uso y negocio con datos, basado en principios de soberanía, interoperabilidad, legalidad y seguridad.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:web": "pnpm --filter web dev"
+  },
+  "keywords": [
+    "DataSpace",
+    "Marketplace de datos",
+    "Espacios de datos",
+    "España",
+    "Europa",
+    "Plataforma de datos",
+    "Soberanía de datos",
+    "ENS",
+    "Privacidad",
+    "Seguridad",
+    "Economía de datos"
+  ],
+  "author": "GrayHats S.L.U.",
+  "license": "AGPL-3.0-only",
+  "packageManager": "pnpm@11.1.1",
+  "engines": {
+    "node": ">=24"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "extends": ["@commitlint/config-conventional"],
+  "rules": {
+    "scope-enum": [
+      2,
+      "always",
+      [
+        "auth",
+        "session",
+        "onboarding",
+        "catalog",
+        "category",
+        "offering",
+        "spec",
+        "price",
+        "api",
+        "hooks",
+        "ui",
+        "middleware",
+        "sentry",
+        "config",
+        "deps",
+        "ci",
+        "docs",
+        "tests"
+      ]
+    ],
+    "scope-case": [2, "always", "lower-case"],
+    "subject-case": [2, "never", ["sentence-case", "start-case", "pascal-case", "upper-case"]]
+  }
+}

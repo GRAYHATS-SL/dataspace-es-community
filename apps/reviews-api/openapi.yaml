@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: reviews-api
+  version: "1.0.0"
+  description: >
+    Backend de comentarios/valoraciones sobre productos adquiridos.
+    Servicio interno — nunca expuesto directamente a Internet; todo el
+    tráfico (lectura y escritura) pasa por el proxy server-side de `apps/web`.
+servers:
+  - url: http://reviews-api:4000
+    description: Red interna de docker-compose (nunca accesible desde el navegador)
+
+tags:
+  - name: comments
+    description: Comentarios y valoraciones de una ProductOffering
+
+paths:
+  /offerings/{offeringId}/comments:
+    get:
+      tags: [comments]
+      summary: Listar los comentarios de una oferta
+      description: >
+        Lectura pública, sin autenticación — reservado a la red interna donde
+        corre `reviews-api`. Devuelve la lista de comentarios junto con la
+        valoración media y el conteo total.
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+      responses:
+        "200":
+          description: Comentarios de la oferta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommentsWithAverage"
+    post:
+      tags: [comments]
+      summary: Publicar un comentario sobre una oferta
+      description: >
+        Requiere el token interno HMAC emitido por `apps/web` tras verificar
+        que la organización tiene un `ProductInventory` activo (`role: buyer`)
+        para esta oferta. Como máximo un comentario por organización y oferta.
+      security:
+        - InternalToken: []
+      parameters:
+        - $ref: "#/components/parameters/OfferingId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewComment"
+      responses:
+        "201":
+          description: Comentario creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "400":
+          description: >
+            `rating` no es un entero entre 1 y 5, o `body` supera los 1000 caracteres
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "403":
+          description: Token interno ausente, inválido, expirado, o `offeringId` no coincide con el de la ruta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "409":
+          description: Ya existe un comentario de esta organización para esta oferta
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  parameters:
+    OfferingId:
+      name: offeringId
+      in: path
+      required: true
+      description: ID (`urn:ngsi-ld:...`) de la `ProductOffering` TMForum
+      schema:
+        type: string
+        example: "urn:ngsi-ld:product-offering:1"
+
+  securitySchemes:
+    InternalToken:
+      type: http
+      scheme: bearer
+      bearerFormat: "base64url(payloadJson).hex(hmacSha256(payloadJson))"
+      description: >
+        Token interno HMAC-SHA256 (TTL 60s) firmado por `apps/web` con
+        `TOKEN_SECRET` (mismo secreto compartido entre ambos despliegues) tras
+        verificar el ownership de la oferta. `reviews-api` nunca confía en el
+        cliente, solo en este token.
+
+  schemas:
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        offeringId:
+          type: string
+          example: "urn:ngsi-ld:product-offering:1"
+        individualId:
+          type: string
+          example: "urn:ngsi-ld:individual:1"
+        organizationId:
+          type: string
+          example: "urn:ngsi-ld:organization:1"
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        body:
+          type: string
+          nullable: true
+          maxLength: 1000
+        createdAt:
+          type: string
+          format: date-time
+      required: [id, offeringId, individualId, organizationId, rating, body, createdAt]
+
+    NewComment:
+      type: object
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        body:
+          type: string
+          nullable: true
+          maxLength: 1000
+      required: [rating]
+
+    CommentsWithAverage:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Comment"
+        average:
+          type: number
+          description: Valoración media (`0` si la oferta no tiene comentarios)
+        count:
+          type: integer
+      required: [comments, average, count]
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        status:
+          type: integer
+      required: [error, status]

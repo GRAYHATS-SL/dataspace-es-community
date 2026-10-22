@@ -1,0 +1,21 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+overrides:
+  brace-expansion@5: '>=5.0.11 <6'
+  browserslist@4: '>=4.28.7 <5'
+  fast-uri@3: '>=3.1.8 <4'
+  undici@7: '>=7.29.1 <8'
+auditConfig:
+  ignoreGhsas:
+    - GHSA-67mh-4wv8-2f99
+    - GHSA-vfj7-8cjw-p6xm
+allowBuilds:
+  '@scarf/scarf': false
+  '@sentry/cli': true
+  cpu-features: true
+  esbuild: true
+  protobufjs: true
+  sharp: true
+  ssh2: true
+  unrs-resolver: true

@@ -1,0 +1,321 @@
+# Política de Uso de Datos de DataSpace
+
+**Última actualización: 18/02/2026**
+
+## 1. Introducción
+
+Esta Política de Uso de Datos (en adelante, la «Política») establece las reglas, principios y procedimientos para el uso responsable de datos dentro del ecosistema **Dataspace / Dataspace.es** (en adelante, el «Espacio»), garantizando el cumplimiento normativo, la protección de la privacidad y el uso ético de la información.
+
+Esta Política se integra y debe interpretarse de forma coherente con:
+
+- El [Aviso Legal](/aviso-legal),
+- La [Política de Privacidad](/politica-privacidad),
+- La [Política de Cookies](/politica-cookies),
+- El **Acuerdo Marco de Participación** del Espacio, y
+- El **Data Sharing Agreement (DSA)** aplicable a cada caso de uso.
+
+En caso de contradicción, se aplicará la **jerarquía normativa** prevista en los documentos de gobernanza del Espacio: normativa imperativa aplicable (incluido RGPD/DGA/Data Act), acuerdo marco, políticas del espacio de datos, contratos por caso de uso (DSA) y anexos técnicos.
+
+## 2. Normativa y marcos de referencia
+
+Esta Política se fundamenta, entre otras, en las siguientes normas y marcos:
+
+- Reglamento (UE) 2016/679 (**RGPD**) y Ley Orgánica 3/2018 (**LOPDGDD**).
+- Reglamento (UE) 2022/868 (**Data Governance Act - DGA**) (intermediación de datos, neutralidad y obligaciones del intermediario).
+- Reglamento (UE) 2023/2854 (**Data Act**) (condiciones equitativas, no discriminación y principios FRAND, acceso/portabilidad e interoperabilidad).
+- Reglamento (UE) 2024/1689 (**AI Act**) cuando existan servicios que apliquen IA sobre datos del Espacio.
+- Estándares y marcos: **IDSA/IDS-RAM**, DSSC Blueprint, **W3C DCAT / ODRL / Verifiable Credentials**, Gaia-X Trust Framework, FIWARE Data Space Connector, y perfiles nacionales (p. ej., **DCAT-AP-ES** y, cuando aplique, UNE 0087).
+
+## 3. Roles y definiciones
+
+A efectos de esta Política, se usan los siguientes roles (sin perjuicio de las definiciones del Acuerdo Marco):
+
+- **Operador del Espacio (DSO)**: entidad que gestiona la operación y gobernanza del Espacio (onboarding/offboarding, catálogo, servicios esenciales, comité de gobernanza, etc.).
+- **Proveedor de Datos (DP)**: participante que publica o pone a disposición activos de datos.
+- **Consumidor de Datos (DC)**: participante que descubre, negocia y accede a activos de datos.
+- **App/Service Provider (AP)**: participante que ofrece servicios (analítica, IA, etc.) sobre datos dentro del marco de licencias y usage control.
+- **Servicios esenciales** (según diseño del Espacio): **Broker/Catálogo**, **Clearing House**, **Identity & Trust Services** e infraestructura de conectores.
+
+## 4. Principios fundamentales
+
+### 4.1. Soberanía y control de uso
+
+- Los activos de datos permanecen bajo la titularidad/legitimación del **Proveedor de Datos**, que define condiciones de uso, restricciones, territorio, duración, seguridad y (si procede) contraprestación.
+- El control de uso debe estar soportado, cuando aplique, por **políticas legibles por máquina (ODRL)** y su aplicación técnica mediante conectores conformes.
+
+### 4.2. Licitud, minimización y proporcionalidad
+
+- Solo se tratarán/compartirán datos para finalidades **específicas, explícitas y legítimas**.
+- Se aplicará **minimización** (solo los datos estrictamente necesarios) y diseño orientado a la reducción de riesgo.
+
+### 4.3. Transparencia y trazabilidad
+
+- El Espacio debe garantizar trazabilidad de transacciones (p. ej., evidencias en Clearing House) y capacidad de auditoría conforme a la gobernanza del Espacio.
+
+### 4.4 Consentimiento Informado
+
+- Consentimiento específico, informado y libre.
+- Posibilidad de retirar el consentimiento en cualquier momento.
+- Información clara sobre las consecuencias de retirar el consentimiento.
+
+### 4.5. Seguridad y privacidad por diseño y por defecto
+
+- Se aplicarán medidas técnicas y organizativas adecuadas (cifrado, IAM, hardening, logging, detección de anomalías, etc.).
+- Cuando existan datos personales: privacidad por diseño y por defecto, y cumplimiento integral RGPD/LOPDGDD.
+
+## 5. Clasificación de datos
+
+Cada activo/dataset deberá clasificarse (al menos) en:
+
+- **Datos personales**: cualquier información sobre persona física identificada o identificable.
+- **Categorías especiales** (art. 9 RGPD): salud, biométricos, ideología, etc.
+- **Datos no personales**: industriales, IoT, operacionales, etc.
+- **Datos confidenciales / secretos empresariales**: información comercial o técnica protegida.
+- **Datos públicos o abiertos**: reutilizables según su licencia y normativa aplicable.
+
+El Proveedor de Datos deberá declarar restricciones: propiedad intelectual, confidencialidad, normativa sectorial, localización/jurisdicción, y requisitos de transferencia internacional.
+
+## 6. Finalidades de uso
+
+### 6.1. Finalidades permitidas
+
+- Investigación y desarrollo, innovación.
+- Analítica/estadística agregada (sin reidentificación ni finalidad incompatible).
+- Operación del caso de uso pactado en el DSA.
+- Cumplimiento normativo o interés público cuando proceda y esté documentado.
+
+### 6.2. Finalidades restringidas
+
+Solo se permiten si constan expresamente en el DSA/ODRL y, cuando aplique, existe base jurídica suficiente:
+
+- Marketing, publicidad, prospección comercial.
+- Perfilado automatizado o decisiones automatizadas con efectos significativos.
+- Entrenamiento de modelos de IA/ML (incluyendo fine-tuning) si no está explícitamente permitido.
+
+### 6.3. Finalidades prohibidas
+
+- Discriminación, vigilancia masiva o usos contrarios a derechos fundamentales.
+- Reidentificación de datos anonimizados/pseudonimizados, salvo habilitación legal y contractual explícita.
+- Uso para actividades ilícitas, fraude o explotación de vulnerabilidades.
+
+## 7. Licencias, condiciones y Usage Policies (ODRL)
+
+### 7.1. Licenciamiento
+
+Cada activo deberá incorporar:
+
+- **Licencia** (abierta, restringida, comercial, altruista, etc.).
+- **Condiciones de uso**: propósito, duración, territorio, sublicencia, redistribución, retención, seguridad, reversibilidad/borrado.
+- **Condiciones económicas** (si aplica): precios, métricas de consumo, condiciones FRAND/no discriminatorias cuando proceda.
+
+Cada dataset incluye una licencia específica que define:
+
+- **Usuarios autorizados**: ¿Quién puede acceder?
+- **Usos permitidos**: ¿Para qué se pueden usar?
+- **Restricciones**: Limitaciones específicas.
+- **Duración**: Período de validez del acceso.
+- **Compensación**: Contraprestaciones económicas si aplica.
+
+### 7.2 Términos Estándar
+
+- **Atribución**: Reconocimiento del proveedor de datos.
+- **No redistribución**: Prohibición de compartir con terceros.
+- **Uso específico**: Limitado a la finalidad declarada.
+- **Auditoría**: Derecho del proveedor a auditar el uso.
+
+### 7.3 Términos Personalizados
+
+Los proveedores pueden establecer condiciones adicionales:
+
+- Restricciones geográficas.
+- Limitaciones temporales.
+- Requisitos de seguridad específicos.
+- Obligaciones de reporte.
+
+### 7.4. Políticas legibles por máquina
+
+- Cuando el Espacio lo habilite, las restricciones y obligaciones deberán expresarse también como **políticas ODRL** (permisos, prohibiciones, obligaciones/duties) vinculadas al activo/dataset y ejecutadas por el conector.
+- Los eventos de aceptación, expiración y evidencias de borrado/retención se registrarán según el diseño del **Clearing House**.
+
+### 7.5. Derivados y resultados (output)
+
+- Los resultados/derivados generados por el Consumidor podrán quedar sujetos a restricciones (p. ej., “no ingeniería inversa”, “no reconstrucción”) y a obligaciones de reporte si así se define en el DSA/ODRL.
+- Si un derivado permite reconstruir el dato fuente, se considerará copia funcional y quedará sujeto a las mismas restricciones del activo original.
+
+## 8. Obligaciones por rol
+
+### 8.1. Proveedor de Datos (DP)
+
+- Garantizar legitimación/titularidad y que la cesión/puesta a disposición no vulnera derechos de terceros.
+- Clasificar correctamente el activo (personal/no personal/confidencial) y declarar restricciones.
+- Publicar metadatos completos (p. ej., DCAT-AP-ES), incluyendo calidad, frecuencia, formato, versión, y contactos.
+- Definir licencia y usage policies, incluyendo requisitos de borrado/retención y seguridad.
+
+### 8.2. Consumidor de Datos (DC)
+
+- Usar los datos estrictamente dentro del **propósito autorizado**.
+- Implantar medidas de seguridad y controles de acceso equivalentes o superiores a los exigidos.
+- No redistribuir ni sublicenciar salvo autorización expresa.
+- No reidentificar ni intentar inferir identidad a partir de datos anonimizados/pseudonimizados.
+- Reportar incidentes y cooperar en auditorías.
+
+### 8.3. App/Service Provider (AP)
+
+- Garantizar que sus servicios respetan licencias y usage policies.
+- Si aplica IA, cumplir el **AI Act** y los requisitos de transparencia/gestión del riesgo correspondientes.
+- Garantizar que el output no expone el dataset fuente ni facilita su reconstrucción cuando esté prohibido.
+
+### 8.4. Operador del Espacio (DSO)
+
+- Actuar con **neutralidad**, transparencia e independencia cuando aplique el régimen del DGA para intermediarios de datos.
+- Mantener separación funcional/contable cuando corresponda y no explotar los datos intercambiados para fines propios no permitidos.
+- Operar el catálogo, clearing, identidad y trazabilidad conforme a las reglas de gobernanza y seguridad del Espacio.
+
+## 9. Derechos de los Titulares de Datos
+
+### 9.1 Derechos RGPD
+
+- **Información**: Conocer el tratamiento de sus datos.
+- **Acceso**: Obtener copia de sus datos.
+- **Rectificación**: Corregir datos inexactos.
+- **Supresión**: "Derecho al olvido".
+- **Limitación**: Restringir ciertos tratamientos.
+- **Portabilidad**: Trasladar datos a otro sistema.
+- **Oposición**: Oponerse al tratamiento.
+
+### 9.2 Ejercicio de Derechos
+
+- **Canal único**: Portal web centralizado para solicitudes.
+- **Plazos**: Respuesta en máximo 1 mes.
+- **Gratuidad**: Sin coste para el titular.
+- **Verificación**: Procedimiento seguro de identificación.
+
+## 10. Datos personales: reglas específicas
+
+Cuando un activo/dataset incluya datos personales:
+
+- Cada parte deberá determinar su rol (Responsable/Encargado/Corresponsable) y firmar el acuerdo aplicable (p. ej., **DPA** cuando proceda).
+- Se garantizarán: base jurídica (art. 6 RGPD), transparencia (arts. 12–14 RGPD), minimización, limitación de finalidad, exactitud, conservación limitada y seguridad (art. 32 RGPD).
+- Cuando exista alto riesgo, se realizará **Evaluación de Impacto (EIPD/DPIA)**.
+- Se habilitarán mecanismos para atender derechos (acceso, rectificación, supresión, oposición, limitación, portabilidad y art. 22 RGPD).
+
+## 11. Obligaciones de los Participantes
+
+### 11.1 Proveedores de Datos
+
+- Garantizar la legitimidad del origen de los datos.
+- Proporcionar metadatos completos y precisos.
+- Mantener actualizadas las condiciones de uso.
+- Notificar cambios en el estado legal de los datos.
+- Implementar medidas técnicas de protección.
+
+### 11.2 Consumidores de Datos
+
+- Respetar estrictamente las condiciones de uso.
+- Implementar medidas de seguridad adecuadas.
+- No intentar reidentificar datos anonimizados.
+- Reportar incidentes de seguridad inmediatamente.
+- Proporcionar información sobre el uso cuando se requiera.
+
+### 11.3 Responsabilidades Compartidas
+
+- Cumplimiento de la normativa aplicable.
+- Cooperación en auditorías y controles.
+- Notificación de brechas de seguridad.
+- Mantenimiento de registros de tratamiento.
+
+## 12. Seguridad
+
+Medidas mínimas esperadas (ajustables por activo/dataset/DSA):
+
+- Cifrado en tránsito (TLS 1.2+) y, cuando aplique, cifrado de extremo a extremo.
+- Autenticación mutua entre conectores.
+- Integridad de datos verificada criptográficamente.
+- Cifrado en reposo y gestión robusta de claves.
+- Cifrado AES-256 para datos almacenados.
+- Gestión segura de claves criptográficas.
+- Backup cifrado y geográficamente distribuido.
+- Gestión de identidades y accesos (MFA, mínimo privilegio, revisiones periódicas, logs detallados de todos los accesos).
+- Registro y monitorización, detección de usos anómalos.
+- Hardening y actualización de conectores y componentes.
+- Técnicas de anonimización probadas científicamente.
+- Pseudonimización cuando la anonimización no sea posible.
+- Evaluación regular del riesgo de reidentificación.
+
+## 13. Monitorización, auditoría y evidencias
+
+- Las transacciones y eventos relevantes podrán registrarse en el **Clearing House** para evidencias de contratación/aceptación de políticas, consumo, expiración y borrado.
+- El Operador y/o el Proveedor podrán realizar auditorías razonables conforme a la gobernanza del Espacio, preservando la confidencialidad y los secretos empresariales.
+
+## 14. Gestión de incidentes
+
+- Todo participante deberá notificar incidentes relevantes sin dilación indebida y cooperar en la contención, erradicación y recuperación.
+- Cuando existan datos personales, aplicarán los deberes de notificación de brechas (RGPD arts. 33–34) según corresponda.
+
+### 14.1 Tipos de Incidentes
+
+- **Brechas de seguridad**: Acceso no autorizado.
+- **Uso indebido**: Violación de condiciones de uso.
+- **Errores técnicos**: Fallos en la protección de datos.
+- **Incumplimientos normativos**: Violación del RGPD.
+
+###14.2 Procedimiento de Respuesta
+
+1. **Detección**: Identificación automática o manual.
+2. **Contención**: Medidas inmediatas para limitar el impacto.
+3. **Evaluación**: Análisis del alcance y gravedad.
+4. **Notificación**: Comunicación a autoridades y afectados.
+5. **Investigación**: Análisis detallado de causas.
+6. **Corrección**: Implementación de medidas correctivas.
+7. **Prevención**: Medidas para evitar recurrencia.
+
+### 14.3 Plazos de Notificación
+
+- **Autoridades de Control**: 72 horas máximo.
+- **Titulares de Datos**: Sin dilación indebida si alto riesgo.
+- **Proveedores de Datos**: 24 horas máximo.
+- **Participantes Afectados**: 48 horas máximo.
+
+## 15. Transferencias internacionales y localización
+
+- Por defecto, el intercambio se orienta a UE/EEE.
+- Transferencias fuera del EEE: solo con garantías adecuadas (p. ej., adecuación, SCC, medidas complementarias) cuando haya datos personales.
+- Para datos no personales, se aplicarán restricciones contractuales y técnicas para preservar soberanía, confidencialidad y requisitos del caso de uso.
+
+## 16. Formación y Concienciación
+
+### 16.1 Programa de Formación y Concienciación
+
+- Formación y Concienciación obligatoria para todos los usuarios.
+- Actualización anual sobre cambios normativos.
+- Formación específica por roles y responsabilidades.
+
+## 17. Sanciones y consecuencias por incumplimiento
+
+El incumplimiento de esta Política, del Acuerdo Marco o de un DSA podrá dar lugar a:
+
+- Suspensión temporal de acceso,
+- Revocación de credenciales,
+- Resolución contractual y offboarding,
+- Reclamaciones de daños y perjuicios,
+- Comunicación a autoridades competentes cuando proceda.
+
+### 17.1 Procedimiento Sancionador
+
+- Respeto al derecho de defensa.
+- Proporcionalidad de las medidas.
+- Posibilidad de recurso.
+- Transparencia en el proceso.
+
+## 18. Revisión y actualización
+
+Esta Política se revisará al menos anualmente o cuando existan cambios relevantes normativos, técnicos o de gobernanza del Espacio. Los cambios sustanciales se publicarán con preaviso razonable según el procedimiento de gobernanza aplicable.
+
+## 19. Contacto
+
+Para consultas sobre esta Política y/o para coordinación de cumplimiento:
+
+- **Correo general**: info@dataspace.es
+- **Delegado de Protección de Datos (DPO)**: José Carlos Almansa Moreno - [dpo@grayhats.com](mailto:dpo@grayhats.com)
+- **Teléfono**: +34 957 858 977
+- **Dirección postal**: Avenida Gran Capitán 46, oficina 1-1, Córdoba, España

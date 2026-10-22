@@ -1,0 +1,14 @@
+dataspace.es
+Componente de marketplace sobre TM Forum (código abierto)
+Copyright (C) 2026 GrayHats S.L.U.
+
+Distribuido bajo la licencia GNU Affero General Public License v3.0
+(AGPL-3.0-only). Véase el fichero LICENSE.
+
+Financiación
+Este software forma parte del proyecto «Plataforma dataspace.es» (expediente
+TSI-100130-2024-31), financiado por la Secretaría de Estado de Digitalización e
+Inteligencia Artificial del Ministerio para la Transformación Digital y de la
+Función Pública, en el marco del Programa de Productos y Servicios Tecnológicos
+para Espacios de Datos, y financiado por la Unión Europea – NextGenerationEU a
+través del Plan de Recuperación, Transformación y Resiliencia.

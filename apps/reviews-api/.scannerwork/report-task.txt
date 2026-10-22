@@ -1,0 +1,6 @@
+projectKey=dataspace-reviews-api
+serverUrl=http://localhost:9000
+serverVersion=26.10.0.133078
+dashboardUrl=http://localhost:9000/dashboard?id=dataspace-reviews-api
+ceTaskId=b7e318da-b0d4-41c7-b4ad-e7ace5dfce9b
+ceTaskUrl=http://localhost:9000/api/ce/task?id=b7e318da-b0d4-41c7-b4ad-e7ace5dfce9b

@@ -1,0 +1,14 @@
+# Generated files
+src/components/atoms/Icon/icons/
+_dev_tools/
+
+# Build outputs
+.next/
+dist/
+out/
+
+# Dependencies
+node_modules/
+
+# Storybook
+storybook-static/

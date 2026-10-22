@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.vercel/
+.turbo/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime / temp
+.cache/
+.temp/
+tmp/
+*.tmp
+
+apps/**/data/databases/
+
+
+# Certificates and private keys
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.cert
+
+# Scripts with credentials
+scripts/get-credential*.sh
+
+# OS
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+.vscode/extensions.json
+/.claude/settings.json

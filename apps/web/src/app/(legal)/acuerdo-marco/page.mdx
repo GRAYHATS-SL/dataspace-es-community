@@ -1,0 +1,443 @@
+# Acuerdo Marco de Participación en Dataspace
+
+**Última actualización: 18 de enero de 2026**
+
+## Preámbulo
+
+El presente Acuerdo Marco de Participación (en adelante, el «Acuerdo») establece las condiciones jurídicas, organizativas y técnicas que rigen la adhesión y participación de entidades y personas jurídicas (en adelante, «Participantes») en el espacio de datos **Dataspace.es** (en adelante, el «Espacio»), operado por **CordubaTech**, asociación sin ánimo de lucro, en calidad de Operador, con el soporte tecnológico de **GrayHats S.L.U.** (marca comercial Dataspace), definiendo los derechos y obligaciones de todas las partes involucradas en el intercambio seguro y colaborativo de datos.
+
+Este Acuerdo se alinea con:
+
+- **UNE 0087:2025** - Definición y caracterización de espacios de datos.
+- **Reglamento (UE) 2022/868 (DGA)** - Data Governance Act.
+- **Reglamento (UE) 2023/2854 (Data Act)**.
+- **Reglamento (UE) 2016/679 (RGPD)** y normativa nacional de protección de datos (**LO 3/2018, LOPDGDD**).
+- **Reglamento (UE) 2024/1689 (AI Act)**, cuando aplique.
+- **Reglamento eIDAS / eIDAS 2.0**.
+- Marcos de referencia: **IDS-RAM** y Rulebook de **IDSA**; **W3C** (DCAT, ODRL, VC); **Gaia-X Trust Framework**; **FIWARE Data Space Connector**; **DSSC Blueprint**.
+
+## 1. Objeto y alcance
+
+Dataspace es una plataforma tecnológica que facilita el intercambio controlado y seguro de datos entre organizaciones participantes, promoviendo la colaboración y el aprovechamiento del valor de los datos manteniendo la soberanía y control sobre los mismos.
+
+### 1.1. El Acuerdo regula el marco común de participación de gobernanza, derechos y obligaciones de los Participantes, así como los procesos de incorporación, uso y salida del Espacio, garantiza la interoperabilidad técnica y semántica, asegura el cumplimiento normativo y promueve la confianza entre participantes.
+
+### 1.2. Este Acuerdo es condición necesaria para acceder a los servicios del Espacio y se complementa con las políticas y documentos vinculados (Anexos), en particular:
+
+- [Política de Gobernanza](/politica-gobernanza).
+- [Política de Uso de Datos](/politica-uso-datos).
+- [Política de Privacidad](/politica-privacidad).
+- [Política de Cookies](/politica-cookies)
+- [Aviso Legal](/aviso-legal).
+- SLA de Servicios Esenciales (Anexo VI).
+- Guías de Interoperabilidad CTI (Anexo V).
+- Data Sharing Agreements (DSA) por caso de uso.
+
+### 1.3. El Espacio es multisectorial, colaborativo y, en su fase inicial, se focaliza en España, con vocación de federación futura en la UE.
+
+## 2. Definiciones
+
+- **Operador (DSO)**: CordubaTech, entidad sin ánimo de lucro que gestiona la operación y gobernanza del Espacio, con el soporte tecnológico de GrayHats S.L.U.
+- **Dataspace**: La plataforma y ecosistema digital para el intercambio de datos.
+- **Participante**: persona jurídica adherida al Espacio que acepta el Acuerdo y las políticas aplicables.
+- **Proveedor de Datos (DP)**: Participante que publica o pone a disposición activos de datos.
+- **Consumidor de Datos (DC)**: Participante que descubre, negocia y accede a activos de datos.
+- **Broker**: servicio de catálogo y descubrimiento de metadatos, sin acceso al contenido.
+- **Clearing House (CH)**: servicio de registro de evidencias, contratos y trazabilidad.
+- **Identity/Trust Services (IdP/TS)**: servicio de identidad, credenciales y atributos verificables.
+- **App/Service Provider (AP)**: Participante que ofrece servicios/analítica sobre datos con usage control.
+- **Conector**: componente conforme IDS/EDC/FIWARE DSC que negocia contratos y aplica políticas de uso.
+- **Política de Uso (Usage Policy)**: reglas legibles por máquina (ODRL) que restringen/permiten el uso de datos (propósito, duración, sublicencia, territorio, etc.).
+- **Datos/Activos**: conjuntos de datos o flujos (personales o no personales) ofrecidos o consumidos en el Espacio. Registro de datasets disponibles y sus condiciones de uso.
+- **Servicios Esenciales**: Broker, CH, IdP/TS, directorios, soporte y otros aprobados por el Comité de Gobernanza del Espacio (CGE).
+- **Comité de Gobernanza del Espacio (CGE)**: órgano colegiado de supervisión estratégica y aprobación de políticas.
+- **Comité Técnico de Interoperabilidad (CTI)**: órgano técnico que define perfiles de conformidad, guías y niveles de madurez.
+
+## 3. Documentos aplicables y jerarquía
+
+### 3.1. Además del presente Acuerdo, resultan aplicables:
+
+- a) Política de Gobernanza del Espacio.
+- b) Política de Seguridad, Privacidad y Gestión de Incidentes.
+- c) SLA de Servicios Esenciales.
+- d) Guías de Interoperabilidad (CTI).
+- e) Procedimientos de Onboarding/Offboarding.
+- f) Política de Uso de Datos y Licenciamiento.
+- g) Tarifas/Contribuciones y Modelo de Sostenibilidad.
+
+### 3.2. **Jerarquía**: Ley aplicable (RGPD/DGA/Data Act) → este Acuerdo → Políticas → Anexos/Guías técnicas → Contratos particulares de caso de uso (DSA). En caso de conflicto, prevalece la norma de rango superior.
+
+## 4. Principios Fundamentales
+
+### 4.1 Soberanía de Datos
+
+- Los datos permanecen bajo el control del proveedor original.
+- El acceso se concede bajo términos específicos y revocables.
+- El proveedor mantiene la capacidad de auditar el uso de sus datos.
+
+### 4.2 Transparencia
+
+- Condiciones de uso claras y comprensibles.
+- Trazabilidad completa de las transacciones de datos.
+- Información detallada sobre el procesamiento de datos.
+
+### 4.3 Interoperabilidad
+
+- Uso de estándares abiertos e internacionales.
+- Compatibilidad técnica entre diferentes sistemas.
+- Semántica común para la descripción de datos.
+
+### 4.4 Seguridad y Privacidad
+
+- Implementación de medidas de seguridad técnicas y organizativas.
+- Cumplimiento del RGPD y normativa aplicable.
+- Cifrado end-to-end en las transmisiones.
+
+## 5. Adhesión, representación y vigencia
+
+### 5.1. La adhesión requiere: (i) solicitud formal; (ii) aceptación del Acuerdo y políticas; (iii) superación del onboarding técnico-legal-organizativo; (iv) firma por representante con poderes.
+
+### 5.2. El Acuerdo entra en vigor con la aceptación por las Partes y tiene **vigencia indefinida**, sin perjuicio de resolución conforme a la cláusula 18.
+
+### 5.3. El Participante garantiza la exactitud de la información aportada y mantendrá actualizados sus datos registrales.
+
+## 6. Roles y alcances de participación
+
+### 6.1. Los Participantes podrán ejercer **uno o varios roles**: DP, DC, AP, Broker, CH, IdP/TS, Connector Operator.
+
+### 6.2. El Operador (CordubaTech) ejerce las funciones de Data Space Operator y Secretaría del Espacio (convocatorias, actas, Portal de Gobernanza, soporte).
+
+### 6.3. El ejercicio de roles (no exclusivos) exige cumplir las **condiciones de rol del CTI** y las políticas de seguridad e interoperabilidad.
+
+## 7. Obligaciones generales de los Participantes
+
+Todo Participante se compromete a:
+
+- a) Cumplir el Acuerdo, la Política de Gobernanza y demás documentos aplicables.
+- b) Garantizar **interoperabilidad técnica/semántica** conforme a perfiles CTI (APIs, formatos, metadatos DCAT-AP-ES, ODRL, etc.).
+- c) Respetar **usage policies** y contratos de datos, así como la trazabilidad (CH).
+- d) Mantener **seguridad por diseño, privacidad por defecto** y controles de acceso.
+- e) Colaborar en **auditorías y gestión de incidentes** (notificación diligente).
+- f) No realizar uso no autorizado ni ingeniería inversa que vulnere políticas/licencias.
+- g) Abstenerse de **prácticas discriminatorias o abusos contractuales** (Data Act).
+- h) Cumplir con **RGPD** (si aplica), propiedad intelectual, secretos empresariales y normativa sectorial.
+
+## 8. Obligaciones específicas por rol
+
+### 8.1. Proveedor de Datos (DP)
+
+- Clasificar los datos (sensibles, personales/no personales, confidenciales).
+- Proveer **metadatos estandarizados** (DCAT-AP-ES), políticas de uso legibles por máquina (ODRL) y licencias/condiciones.
+- Garantizar **titularidad o legitimación suficiente** y ausencia de cargas que impidan el uso.
+- Aplicar medidas de **anonimización/pseudonimización** cuando proceda.
+- Informar de restricciones de **transferencias internacionales** y derechos de terceros.
+
+### 8.2. Consumidor de Datos (DC)
+
+- Respetar las **políticas de uso** (propósito, retención, sublicencia, territorio, seguridad).
+- Evitar **reidentificación no autorizada** y usos discriminatorios o ilegales.
+- **Borrar o devolver datos** al finalizar el contrato o al expirar la política.
+- Mantener **registros de uso** para auditoría cuando así se exija.
+
+### 8.3. App/Service Provider (AP)
+
+- Implementar **usage control y logging** compatibles con el conector.
+- Asegurar que los resultados derivados respetan licencias/derechos (por ejemplo, output data licensing).
+- Cumplir el **AI Act** (Reg. (UE) 2024/1689) si sus servicios incorporan sistemas de IA.
+
+### 8.4. Broker, Clearing House, IdP/TS, Connector Operator
+
+- **Broker**: no acceder a payload; asegurar no discriminación y disponibilidad del catálogo.
+- **CH**: custodiar evidencias de contratos/uso; integridad y disponibilidad.
+- **IdP/TS**: identidad y atributos conforme a eIDAS/VC; alta disponibilidad y revocación.
+- **Connector Operator**: conformidad con IDS/EDC/FIWARE DSC; parches y hardening.
+
+## 9. Condiciones Técnicas
+
+### 9.1 Conectores
+
+Todos los participantes deben implementar conectores certificados que:
+
+- Cumplan con los estándares técnicos de Dataspace.
+- Garanticen la seguridad en las comunicaciones.
+- Permitan la trazabilidad de las transacciones.
+- Soporten los protocolos de intercambio establecidos.
+
+### 9.2 Metadatos
+
+Los datos compartidos deben incluir metadatos completos que describan:
+
+- Estructura y formato de los datos.
+- Condiciones de uso y restricciones.
+- Información sobre calidad y linaje.
+- Contacto del responsable de los datos.
+
+## 10. Modelo de Gobernanza
+
+### 10.1 Estructura Organizativa
+
+- **Comité de Gobernanza**: Órgano de decisión estratégica.
+- **Comité Técnico**: Responsable de estándares y especificaciones.
+- **Oficina de Cumplimiento**: Supervisión del cumplimiento normativo.
+
+### 10.2 Procesos de Decisión
+
+Las decisiones se toman siguiendo principios democráticos y de consenso, considerando:
+
+- Impacto en todos los participantes.
+- Viabilidad técnica y económica.
+- Cumplimiento normativo.
+- Beneficio del ecosistema.
+
+## 11. Neutralidad del Operador y DGA
+
+### 11.1. CordubaTech actuará con **neutralidad, transparencia e independencia**, sin explotar datos de los Participantes para fines propios (art. 12 DGA).
+
+### 11.2. Cuando los servicios del Espacio se encuadren como **intermediación de datos** (DGA Cap. III), CordubaTech notificará/registrará la actividad ante la **autoridad competente** y observará las obligaciones del Capítulo III: neutralidad, separación funcional y contable, información, seguridad (arts. 11–12 DGA).
+
+### 11.3. El Operador podrá utilizar datos estrictamente para fines de mantenimiento, seguridad, auditoría y mejora del servicio, conforme a políticas y bases jurídicas aplicables.
+
+## 12. Propiedad intelectual, licenciamiento y políticas de uso
+
+### 12.1. La titularidad de los datos y activos corresponde a quien **legitime su derecho** (DP u otros).
+
+### 12.2. Los contratos de datos y las usage policies se integran al Acuerdo y prevalecen sobre condiciones generales en lo específico.
+
+### 12.3. Las **licencias de uso** (estándar o personalizadas) definirán: fines permitidos, límites, sublicencia, retención, seguridad, territorio, reversibilidad, condiciones económicas (si las hubiera).
+
+### 12.4. El CTI podrá publicar **perfiles de licencia y taxonomías de propósito** para favorecer la automatización (ODRL).
+
+### 12.5. Los **derivados no reversibles** (que no permitan reconstrucción del dato fuente) pertenecen al DC, salvo pacto en contrario. Los derivados que permitan ingeniería inversa se tratan como copia del activo original.
+
+## 13. Datos personales, confidenciales y sensibles
+
+### 13.1. Si se tratan **datos personales**, cada Parte actuará como Responsable o Encargado según proceda, suscribiendo el **acuerdo de tratamiento (DPA)** correspondiente y cumpliendo el RGPD y la LOPDGDD.
+
+### 13.2. Para **datos sensibles** (salud, menores, secretos, etc.), se exigirán controles reforzados y, cuando proceda, **Evaluación de Impacto (EIPD/DPIA)** conforme al art. 35 RGPD.
+
+### 13.3. El reuso de **datos del sector público protegidos** se regirá por la DGA y la normativa nacional aplicable (Ley de Reutilización de Información del Sector Público).
+
+## 14. Seguridad, ENS y gestión de incidentes
+
+### 14.1. Seguridad alineada con **ENS** (cuando aplique), **ISO/IEC 27001** o equivalentes, y requisitos CTI.
+
+### 14.2. Medidas mínimas: gestión de identidades y accesos (MFA, mínimo privilegio), cifrado en tránsito (TLS 1.2+) y en reposo, segregación de entornos, hardening de conectores y monitoreo continuo.
+
+### 14.3. **Gestión de incidentes**: canal de notificación, clasificación, contención, reporte a afectados/autoridades cuando proceda (72 h a AEPD/autoridad competente conforme a arts. 33–34 RGPD; 24 h al Operador y participantes afectados), y lecciones aprendidas.
+
+### 14.4. **Continuidad**: RPO/RTO definidos en SLA; pruebas periódicas de recuperación.
+
+## 15. Interoperabilidad y certificación
+
+### 15.1. Cumplimiento de **perfiles de conformidad** IDS-A/EDC, FIWARE DSC, W3C (DCAT/ODRL/VC), Gaia-X (etiquetas).
+
+### 15.2. El CTI publicará **niveles de madurez** (UNE 0087) y pruebas de interoperabilidad. El Espacio podrá reconocer esquemas de certificación (IDSA/Gaia-X u otros).
+
+### 15.3. El Participante acepta someterse a **ensayos de conformidad** para el onboarding y durante su participación.
+
+## 16. Trazabilidad, auditoría y Clearing House
+
+### 16.1. Todas las transacciones sujetas a control se registrarán en el **Clearing House** (contratos, políticas aplicadas, eventos de uso cuando proceda).
+
+### 16.2. El Operador ejecutará un **Programa Anual de Auditoría**, aprobado por el CGE, con alcance técnico, organizativo y legal.
+
+### 16.3. Los Participantes facilitarán **evidencias razonables** y acceso a logs, respetando confidencialidad y secreto profesional.
+
+## 17. Sostenibilidad económica y condiciones financieras
+
+### 17.1. CordubaTech es sin ánimo de lucro; cualquier ingreso se destina a operación, mejora y sostenibilidad del Espacio.
+
+### 17.2. Podrán existir **contribuciones de membresía**, tasas por servicios (p. ej., certificación, soporte) y financiación pública/privada alineada con el interés general.
+
+### 17.3. Cualquier modelo económico será **transparente y no discriminatorio**; se publicará en el Anexo de Tarifas y se revisará anualmente por el CGE.
+
+### 17.4 Modelo de Costes
+
+- Coste de participación en la plataforma.
+- Coste por transacción de datos.
+- Coste de servicios adicionales.
+- Modelo de compensación entre participantes.
+
+## 18. Data Act: acceso, portabilidad e interoperabilidad cloud
+
+### 18.1. Los fabricantes/proveedores deberán habilitar **acceso y portabilidad** de los datos generados por productos y servicios conectados, conforme al Data Act (arts. 3-7).
+
+### 18.2. Los proveedores cloud/servicios de datos garantizarán **migración sin bloqueo**, APIs y formatos estandarizados, y eliminación de **cláusulas abusivas** (arts. 8–12 Data Act).
+
+### 18.3. Las solicitudes **B2G** (acceso por interés público) se atenderán conforme a la ley, preservando confidencialidad y proporcionalidad (arts. 14-22 Data Act).
+
+## 19. Transferencias internacionales y soberanía
+
+Todos los costes y tarifas son públicos y se revisan anualmente por el Comité de Gobernanza.
+
+### 19.1. Las transferencias de **datos personales** fuera del EEE requerirán una base legal adecuada (p. ej., Decisión de Adecuación, SCC, art. 46 RGPD).
+
+### 19.2. Para **datos no personales**, se aplicarán garantías contractuales y técnicas equivalentes a la normativa UE (Data Act/DGA/Reg. (UE) 2018/1807).
+
+### 19.3. El Operador podrá exigir **declaraciones de transferencia** y controles técnicos (p. ej., localización, cifrado, escrow de claves).
+
+## 20. Subcontratación
+
+### 20.1. El Participante podrá subcontratar funciones, manteniendo **responsabilidad plena** frente a terceros y al Espacio.
+
+### 20.2. Toda subcontratación deberá respetar el Acuerdo, RGPD (si aplica) y las políticas técnicas/organizativas. El Operador podrá requerir información sobre **subencargados críticos**.
+
+## 21. Resolución, suspensión y salida (offboarding)
+
+### 21.1. Cualquiera de las Partes podrá **resolver** el Acuerdo por incumplimiento material no subsanado en **30 días** desde notificación.
+
+### 21.2. El Operador podrá **suspender temporalmente** accesos/servicios ante riesgos graves de seguridad o incumplimientos manifiestos, con ratificación del CGE en 72 horas.
+
+### 21.3. **Offboarding**: revocación de credenciales, eliminación/devolución de datos según contratos/políticas, cierre de evidencias en CH y certificados de destrucción cuando proceda.
+
+### 21.4. Las cláusulas de **confidencialidad, PI, responsabilidad y auditoría** subsistirán por el periodo indicado en los Anexos o, en defecto, **5 años**.
+
+### 21.5. Los Participantes podrán **denunciar** su participación con un preaviso mínimo de **3 meses** (o el plazo que establezca el Anexo correspondiente), manteniendo las obligaciones adquiridas durante su participación hasta la conclusión efectiva del offboarding.
+
+## 22. Responsabilidad, garantías e indemnización
+
+### 22.1. Cada Parte responde de los **daños directos** causados por su incumplimiento. El Espacio no garantiza disponibilidad continua fuera de lo comprometido en SLA.
+
+### 22.2. Salvo dolo o culpa grave, la **responsabilidad agregada** de cada Parte frente a otra por año se limita a las tasas efectivamente abonadas por el servicio correspondiente (si las hubiera) o, si no existieran, a **[importe]€** (o la cifra acordada en Anexo).
+
+### 22.3. Ni el Operador ni los Servicios Esenciales serán responsables por **daños indirectos** (lucro cesante, pérdida de negocio), salvo disposición legal imperativa.
+
+### 22.4. El Participante **indemnizará** frente a reclamaciones de terceros por infracción de derechos/leyes derivadas de su conducta o de sus subcontratistas.
+
+## 23. Confidencialidad
+
+### 23.1. La información intercambiada con carácter confidencial no podrá divulgarse a terceros sin autorización, salvo mandato legal.
+
+### 23.2. La obligación **subsistirá por 5 años** desde la terminación, salvo que una norma exija mayor plazo.
+
+## 24. Cambios en el Acuerdo y en las Políticas
+
+### 24.1. Cambios **sustantivos** del Acuerdo o de políticas vinculadas requerirán propuesta formal y aprobación del CGE (votación por mayoría cualificada), un periodo público de comentarios de **30 días** y un período de adaptación de 90 días.
+
+### 24.2. Los cambios **menores** (técnicos/operativos) podrán adoptarse con preaviso razonable (**15 días**) mediante publicación en el Portal de Gobernanza.
+
+## 25. Entrada en Vigor y Duración
+
+### 25.1 Vigencia
+
+Este acuerdo entrará en vigor con la firma y tiene una duración indefinida.
+
+### 25.2 Denuncia
+
+Los participantes pueden denunciar su participación con preaviso de 6 meses, manteniendo las obligaciones adquiridas durante su participación.
+
+## 26. Cumplimiento Normativo
+
+### 26.1 Protección de Datos
+
+- Cumplimiento estricto del RGPD.
+- Implementación de Privacy by Design.
+- Gestión adecuada del consentimiento.
+- Derechos de los interesados garantizados.
+
+### 26.2 Ciberseguridad
+
+- Cumplimiento del marco de ciberseguridad nacional.
+- Certificaciones de seguridad requeridas.
+- Auditorías periódicas de seguridad.
+- Plan de respuesta a incidentes.
+
+## 27. Resolución de disputas y ley aplicable
+
+### 27.1. Las Partes procurarán resolver disputas mediante **negociación** y, en su caso, **mediación** bajo el Reglamento de Mediación de [Dataspace].
+
+### 27.2. Persistiendo la disputa, se someterá a **arbitraje de derecho** en Córdoba, España, idioma español, conforme al Reglamento de [Dataspace], sin perjuicio de acciones inaplazables ante la jurisdicción competente.
+
+### 27.3. **Ley aplicable**: Derecho español y de la Unión Europea.
+
+## 28. Anticorrupción, competencia y ética
+
+### 28.1. Las Partes cumplirán la normativa de **competencia, anticorrupción y blanqueo de capitales** aplicable.
+
+### 28.2. Se prohíben las **prácticas colusorias**, el intercambio de información sensible fuera del marco permitido y cualquier trato discriminatorio.
+
+## 29. Miscelánea
+
+### 29.1. **Cesión**: requerirá consentimiento previo y por escrito, salvo cambio de control interno que no afecte obligaciones.
+
+### 29.2. **Nulidad parcial**: la invalidez de una cláusula no afectará al resto.
+
+### 29.3. **Notificaciones**: por medios electrónicos registrados en el Portal de Gobernanza o los que se indiquen en el Anexo de Partes.
+
+## 30. Firmas
+
+En prueba de conformidad, las Partes suscriben el presente Acuerdo en la fecha de entrada en vigor.
+
+**CordubaTech (Operador)**
+
+Nombre
+Cargo
+DNI/NIE
+Firma
+Fecha
+
+**Participante**
+
+Razón social
+CIF
+Representante
+Cargo
+Firma
+Fecha
+
+## Anexos normativos y operativos
+
+### Anexo I. Glosario ampliado
+
+Definiciones extensas de roles y servicios (IDSA), datos derivados, datos enriquecidos, output data licensing, data altruism, trusted intermediary, etc.
+
+### Anexo II. Matriz de cumplimiento legal
+
+- RGPD (bases jurídicas, derechos, contratos R-E), DGA (Cap. III), Data Act (obligaciones IoT/Cloud), propiedad intelectual, competencia, sectoriales.
+- Plantillas de SCC y cláusulas de transferencias internacionales.
+
+### Anexo III. Política de Uso de Datos (Usage Policies) y Licencias
+
+- Perfiles ODRL/legibles por máquina; taxonomía de propósitos; ejemplos de cláusulas de retención, seguridad, sublicencia, territorio, reversibilidad.
+- Modelos de licencias: abiertas, restringidas, comerciales, altruistas.
+
+### Anexo IV. Procedimientos de Onboarding / Offboarding
+
+- Requisitos de adhesión: técnica (conector conforme, metadatos, pruebas), legal (poderes, contratos) y organizativa (contactos, cumplimiento).
+- Checklists de salida: revocación, borrado/devolución, cierre de evidencias CH.
+
+### Anexo V. Guías de Interoperabilidad (CTI)
+
+- Perfiles técnicos: IDS/EDC/FIWARE DSC; W3C (DCAT-AP-ES, ODRL, Verifiable Credentials); Gaia-X (etiquetas).
+- Semántica por dominio: mapping y validación; requisitos de API y catálogo.
+
+### Anexo VI. SLA de Servicios Esenciales
+
+- Disponibilidad/latencia de Broker, CH, IdP/TS; tiempos de respuesta de soporte; RPO/RTO; mantenimientos; penalizaciones y exenciones.
+
+### Anexo VII. Política de Seguridad, Privacidad e Incidentes
+
+- Clasificación de información, cifrado, IAM, hardening, registro y monitoreo, plan de respuesta a incidentes y notificación a autoridades.
+
+### Anexo VIII. Modelo de Sostenibilidad y Tarifas
+
+- Contribuciones de membresía (si las hubiera), tasas por certificación/conformidad, soporte, formación; principios de no lucro, transparencia y no discriminación.
+
+### Anexo IX. Programa Anual de Auditoría y Conformidad
+
+- Alcance, periodicidad, evidencias, auditorías de rol, correcciones y KPIs de gobernanza.
+
+### Anexo X. Plantillas contractuales
+
+- Data Sharing Agreement (DSA) por caso de uso.
+- Acuerdo de Tratamiento (DPA) RGPD.
+- Cláusulas B2G (interés público) y B2B/B2C (Data Act).
+- Acuerdo de confidencialidad (NDA).
+
+Para cualquier consulta sobre este acuerdo marco:
+
+- **Email**: info@dataspace.es
+- **Teléfono**: +34 957 858 977
+- **Dirección**: Avenida Gran Capitán 46, oficina 1-1, Córdoba, España
+
+**Dataspace - Acuerdo Marco de Participación v1.0**

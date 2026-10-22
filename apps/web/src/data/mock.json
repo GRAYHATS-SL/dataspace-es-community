@@ -1,0 +1,1598 @@
+[
+  {
+    "hasAccess": "access",
+    "id": "produccion-renovable-cordoba",
+    "title": "Producción de Energías Renovables Córdoba",
+    "description": "Generación horaria de energía solar y eólica en la provincia de Córdoba durante 2023-2024.",
+    "icon": "SolarPower",
+    "accessDate": "20/01/2025",
+    "expiryDate": "20/07/2027",
+    "formats": [
+      "JSON",
+      "CSV"
+    ],
+    "size": "670 MB",
+    "catalog": {
+      "id": "produccion-renovable-cordoba",
+      "title": "Producción de Energías Renovables Córdoba",
+      "description": "Datos históricos y en tiempo real de generación solar y eólica en Córdoba y su provincia, incluyendo parques fotovoltaicos y aerogeneradores con granularidad horaria.",
+      "categories": [
+        "SOSTENIBILIDAD"
+      ],
+      "publisher": "Red Eléctrica de España - Delegación Andalucía",
+      "license": "Open Data Commons",
+      "modified": "20/05/2024",
+      "published": "15/01/2023",
+      "distribution": "JSON, CSV, API",
+      "quality": "Excelente",
+      "standard": "IEC 61970",
+      "icon": "Sun"
+    },
+    "details": {
+      "id": "renewable-energy-production",
+      "title": "Producción Renovable Córdoba",
+      "description": "Generación solar y eólica en la provincia de Córdoba con datos horarios.",
+      "icon": "Sun",
+      "categories": [
+        "SOSTENIBILIDAD"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Red Eléctrica de España - Delegación Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": "pending",
+    "id": "transporte-urbano-cordoba",
+    "title": "Transporte Urbano Córdoba - Recorridos y Horarios",
+    "description": "Información geolocalizada y frecuencia de paso de autobuses urbanos de Córdoba (Aucorsa) y líneas metropolitanas con actualización cada 30 segundos.",
+    "icon": "Workflow",
+    "accessDate": "03/02/2025",
+    "expiryDate": "03/08/2027",
+    "formats": [
+      "JSON",
+      "CSV",
+      "API"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "transporte-urbano-cordoba",
+      "title": "Red de Transporte Metropolitano de Córdoba - Tiempo Real",
+      "description": "Información geolocalizada y frecuencia de paso de la red de autobuses y trenes ligeros del área metropolitana de Córdoba, incluyendo paradas principales y afluencia de pasajeros, con actualización cada 30 segundos.",
+      "categories": [
+        "URBANISMO"
+      ],
+      "publisher": "Consorcio de Transportes de Córdoba",
+      "license": "Open Data Commons",
+      "modified": "22/05/2024",
+      "published": "10/01/2023",
+      "distribution": "JSON, CSV, API",
+      "quality": "Excelente",
+      "standard": "DCAT-AP 2.1",
+      "icon": "Bus"
+    },
+    "details": {
+      "id": "transporte-metropolitano",
+      "title": "Red de Transporte Metropolitano de Córdoba - Tiempo Real",
+      "description": "Información geolocalizada y frecuencia de paso de autobuses urbanos de Córdoba (Aucorsa) y líneas metropolitanas con actualización cada 30 segundos.",
+      "icon": "Workflow",
+      "categories": [
+        "TIEMPO REAL"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Consorcio de Transportes de Córdoba"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Spatial Coverage",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "consumo-energetico-industrial",
+    "title": "Consumo Eléctrico de Polígonos Industriales",
+    "description": "Desglose horario del consumo energético en polígonos industriales como Las Quemadas y Amargacena durante el periodo 2023-2024.",
+    "icon": "Factory",
+    "accessDate": "15/01/2025",
+    "expiryDate": "15/01/2027",
+    "formats": [
+      "Parquet",
+      "CSV",
+      "XML",
+      "XLSX"
+    ],
+    "size": "850 MB",
+    "catalog": {
+      "id": "consumo-energetico-industrial",
+      "title": "Consumo Energético Industrial Córdoba",
+      "description": "Conjunto de datos agregados sobre consumo eléctrico y térmico de polígonos industriales de Córdoba, segmentado por sector industrial y horarios de mayor actividad.",
+      "categories": [
+        "SOSTENIBILIDAD"
+      ],
+      "publisher": "Agencia Andaluza de Energía",
+      "license": "Creative Commons",
+      "modified": "15/05/2024",
+      "published": "05/01/2024",
+      "distribution": "XML, XLSX",
+      "quality": "Alta",
+      "standard": "ISO/IEC 19115",
+      "icon": "Zap"
+    },
+    "details": {
+      "id": "energy-efficiency-industrial",
+      "title": "Consumo Energético Industrial Córdoba",
+      "description": "Consumo eléctrico y térmico agregado de polígonos industriales como Las Quemadas y Amargacena.",
+      "icon": "Zap",
+      "categories": [
+        "SOSTENIBILIDAD"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Agencia Andaluza de Energía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "indice-precios-consumo-cordoba-historico",
+    "title": "Índice de Precios al Consumo - Córdoba Histórico",
+    "description": "Índices de precios al consumo en Córdoba, serie histórica desde 2010, con desagregación por sectores y municipios.",
+    "icon": "TrendingUp",
+    "accessDate": "20/12/2024",
+    "expiryDate": "Permanent",
+    "formats": [
+      "CSV",
+      "JSON",
+      "XML"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "indice-precios-consumo-cordoba-historico",
+      "title": "Indicadores Económicos de Córdoba",
+      "description": "Índices de producción, empleo y actividad económica por sectores en la provincia de Córdoba, con desagregación por municipios y serie temporal desde 2010.",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "publisher": "Instituto de Estadística de Andalucía",
+      "license": "Open Data",
+      "modified": "12/05/2024",
+      "published": "20/02/2024",
+      "distribution": "CSV, JSON, XML",
+      "quality": "Alta",
+      "standard": "SDMX",
+      "icon": "TrendingUp"
+    },
+    "details": {
+      "id": "economic-indicators",
+      "title": "Indicadores Económicos Córdoba",
+      "description": "Datos de empleo, actividad empresarial y producción por sectores en Córdoba.",
+      "icon": "TrendingUp",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Instituto de Estadística de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "calidad-aire-zonas-urbanas",
+    "title": "Calidad del Aire en Zonas Urbanas",
+    "description": "Mediciones en tiempo real de PM2.5, NO2 y O3 desde estaciones ubicadas en Centro, Lepanto y Poniente durante 2024-2025.",
+    "icon": "Air",
+    "accessDate": "10/02/2025",
+    "expiryDate": "10/08/2027",
+    "formats": [
+      "JSON",
+      "CSV"
+    ],
+    "size": "1.1 GB",
+    "catalog": {
+      "id": "air-quality-monitoring",
+      "title": "Red de Calidad del Aire Córdoba",
+      "description": "Mediciones en tiempo real de contaminantes atmosféricos (PM2.5, PM10, NO2, SO2, O3) de estaciones ubicadas en diferentes barrios de Córdoba, con historial diario y semanal.",
+      "categories": [
+        "SALUD"
+      ],
+      "publisher": "Agencia de Medio Ambiente de Andalucía",
+      "license": "CC BY 4.0",
+      "modified": "18/05/2024",
+      "published": "01/03/2023",
+      "distribution": "JSON, CSV",
+      "quality": "Excelente",
+      "standard": "OGC SensorThings",
+      "icon": "Wind"
+    },
+    "details": {
+      "id": "air-quality-monitoring",
+      "title": "Calidad del Aire Córdoba",
+      "description": "Mediciones en tiempo real de PM2.5, NO2 y O3 desde estaciones en Lepanto, Poniente y Centro.",
+      "icon": "Wind",
+      "categories": [
+        "SALUD"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Agencia de Medio Ambiente de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "estadisticas-turisticas-cordoba-2024",
+    "title": "Estadísticas Turísticas Córdoba 2024",
+    "description": "Datos de matriculación, rendimiento académico y recursos por centros educativos de Córdoba, con información desagregada por distrito y nivel educativo.",
+    "icon": "GraduationCap",
+    "accessDate": "05/01/2025",
+    "expiryDate": "05/01/2027",
+    "formats": [
+      "XLSX",
+      "CSV"
+    ],
+    "size": "26.5 MB",
+    "catalog": {
+      "id": "estadisticas-turisticas-cordoba-2024",
+      "title": "Estadísticas Educativas Córdoba",
+      "description": "Datos de matriculación, rendimiento académico y recursos por centros educativos de Córdoba, con información desagregada por distrito y nivel educativo.",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "publisher": "Consejería de Educación de Andalucía",
+      "license": "Open Government",
+      "modified": "10/05/2024",
+      "published": "15/03/2024",
+      "distribution": "XLSX, CSV",
+      "quality": "Muy Alta",
+      "standard": "INSPIRE",
+      "icon": "GraduationCap"
+    },
+    "details": {
+      "id": "education-statistics",
+      "title": "Estadísticas Educativas Córdoba",
+      "description": "Datos de matriculación y rendimiento académico por centros educativos de Córdoba.",
+      "icon": "GraduationCap",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Consejería de Educación de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "censo-empresas-cordoba-2024",
+    "title": "Censo de Empresas Córdoba 2024",
+    "description": "Datos de empresas registradas en Córdoba, con información sobre actividad, tamaño y localización. Incluye series históricas y segmentación por sectores.",
+    "icon": "Briefcase",
+    "accessDate": "18/12/2024",
+    "expiryDate": "Permanent",
+    "formats": [
+      "CSV",
+      "XLSX"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "censo-empresas-cordoba-2024",
+      "title": "Censo de Empresas Córdoba 2024",
+      "description": "Datos de empresas registradas en Córdoba, con información sobre actividad, tamaño y localización. Incluye series históricas y segmentación por sectores.",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "publisher": "Instituto de Estadística de Andalucía",
+      "license": "Open Data",
+      "modified": "18/12/2024",
+      "published": "18/12/2024",
+      "distribution": "CSV, XLSX",
+      "quality": "Alta",
+      "standard": "SDMX",
+      "icon": "Briefcase"
+    },
+    "details": {
+      "id": "censo-empresas-cordoba-2024",
+      "title": "Censo de Empresas Córdoba 2024",
+      "description": "Datos de empresas registradas en Córdoba, con información sobre actividad, tamaño y localización.",
+      "icon": "Briefcase",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Instituto de Estadística de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/censo-empresas-cordoba-2024\",\n  \"dct:title\": \"Política de uso — Censo de Empresas Córdoba 2024 (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso de Censo de Empresas Córdoba 2024. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/censo-empresas-cordoba-2024-v1\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/censo-empresas-cordoba-2024\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "datos-meteorologicos-cordoba-estaciones-locales",
+    "title": "Datos Meteorológicos Córdoba - Estaciones Locales",
+    "description": "Datos meteorológicos de estaciones locales en Córdoba, incluyendo temperatura, humedad, precipitaciones y viento.",
+    "icon": "Cloud",
+    "accessDate": "22/01/2025",
+    "expiryDate": "22/07/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "datos-meteorologicos-cordoba-estaciones-locales",
+      "title": "Datos Meteorológicos Córdoba - Estaciones Locales",
+      "description": "Datos meteorológicos de estaciones locales en Córdoba, incluyendo temperatura, humedad, precipitaciones y viento.",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "publisher": "AEMET",
+      "license": "Open Data",
+      "modified": "22/01/2025",
+      "published": "22/01/2025",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "WMO",
+      "icon": "Cloud"
+    },
+    "details": {
+      "id": "datos-meteorologicos-cordoba-estaciones-locales",
+      "title": "Datos Meteorológicos Córdoba - Estaciones Locales",
+      "description": "Datos meteorológicos de estaciones locales en Córdoba.",
+      "icon": "Cloud",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "AEMET"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "movilidad-urbana-cordoba-q4-2024",
+    "title": "Movilidad Urbana Córdoba Q4 2024",
+    "description": "Datos de movilidad urbana en Córdoba para el cuarto trimestre de 2024, incluyendo recorridos, horarios y afluencia.",
+    "icon": "Directions",
+    "accessDate": "28/12/2024",
+    "expiryDate": "28/06/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "movilidad-urbana-cordoba-q4-2024",
+      "title": "Movilidad Urbana Córdoba Q4 2024",
+      "description": "Datos de movilidad urbana en Córdoba para el cuarto trimestre de 2024, incluyendo recorridos, horarios y afluencia.",
+      "categories": [
+        "URBANISMO"
+      ],
+      "publisher": "Aucorsa",
+      "license": "Open Data",
+      "modified": "28/12/2024",
+      "published": "28/12/2024",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "GTFS",
+      "icon": "Directions"
+    },
+    "details": {
+      "id": "movilidad-urbana-cordoba-q4-2024",
+      "title": "Movilidad Urbana Córdoba Q4 2024",
+      "description": "Datos de movilidad urbana en Córdoba.",
+      "icon": "Directions",
+      "categories": [
+        "URBANISMO"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Aucorsa"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "indicadores-economicos-municipales",
+    "title": "Indicadores Económicos Municipales",
+    "description": "Indicadores económicos por municipio en Córdoba, incluyendo empleo, producción y actividad empresarial.",
+    "icon": "TrendingUp",
+    "accessDate": "12/01/2025",
+    "expiryDate": "12/01/2027",
+    "formats": [
+      "CSV",
+      "JSON"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "indicadores-economicos-municipales",
+      "title": "Indicadores Económicos Municipales",
+      "description": "Indicadores económicos por municipio en Córdoba, incluyendo empleo, producción y actividad empresarial.",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "publisher": "Instituto de Estadística de Andalucía",
+      "license": "Open Data",
+      "modified": "12/01/2025",
+      "published": "12/01/2025",
+      "distribution": "CSV, JSON",
+      "quality": "Alta",
+      "standard": "SDMX",
+      "icon": "TrendingUp"
+    },
+    "details": {
+      "id": "indicadores-economicos-municipales",
+      "title": "Indicadores Económicos Municipales",
+      "description": "Indicadores económicos por municipio en Córdoba.",
+      "icon": "TrendingUp",
+      "categories": [
+        "ESTADÍSTICA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Instituto de Estadística de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": "access",
+    "id": "infraestructura-digital-tic-cordoba",
+    "title": "Infraestructura Digital y TIC Córdoba",
+    "description": "Datos sobre infraestructura digital y tecnologías de la información y comunicación en Córdoba.",
+    "icon": "Wifi",
+    "accessDate": "30/12/2024",
+    "expiryDate": "30/06/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "infraestructura-digital-tic-cordoba",
+      "title": "Infraestructura Digital y TIC Córdoba",
+      "description": "Datos sobre infraestructura digital y tecnologías de la información y comunicación en Córdoba.",
+      "categories": [
+        "TECNOLOGÍA"
+      ],
+      "publisher": "Ayuntamiento de Córdoba",
+      "license": "Open Data",
+      "modified": "30/12/2024",
+      "published": "30/12/2024",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "ITU",
+      "icon": "Wifi"
+    },
+    "details": {
+      "id": "infraestructura-digital-tic-cordoba",
+      "title": "Infraestructura Digital y TIC Córdoba",
+      "description": "Datos sobre infraestructura digital y TIC en Córdoba.",
+      "icon": "Wifi",
+      "categories": [
+        "TECNOLOGÍA"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Ayuntamiento de Córdoba"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "salud-publica-hospitales-centros-atencion",
+    "title": "Salud Pública - Hospitales y Centros de Atención",
+    "description": "Distribución de hospitales y centros de atención en Córdoba, ratios de cobertura y urgencias.",
+    "icon": "Heart",
+    "accessDate": "16/01/2025",
+    "expiryDate": "16/07/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "salud-publica-hospitales-centros-atencion",
+      "title": "Salud Pública - Hospitales y Centros de Atención",
+      "description": "Distribución de hospitales y centros de atención en Córdoba, ratios de cobertura y urgencias.",
+      "categories": [
+        "SALUD"
+      ],
+      "publisher": "Consejería de Salud y Familias de Andalucía",
+      "license": "Open Government",
+      "modified": "16/01/2025",
+      "published": "16/01/2025",
+      "distribution": "CSV",
+      "quality": "Muy Alta",
+      "standard": "INSPIRE",
+      "icon": "Heart"
+    },
+    "details": {
+      "id": "salud-publica-hospitales-centros-atencion",
+      "title": "Salud Pública - Hospitales y Centros de Atención",
+      "description": "Distribución de hospitales y centros de atención en Córdoba.",
+      "icon": "Heart",
+      "categories": [
+        "SALUD"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Consejería de Salud y Familias de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "educacion-cordoba-rendimiento-academico",
+    "title": "Educación en Córdoba - Rendimiento Académico",
+    "description": "Datos de rendimiento académico por centros educativos en Córdoba, con información desagregada por distrito y nivel educativo.",
+    "icon": "GraduationCap",
+    "accessDate": "04/01/2025",
+    "expiryDate": "Permanent",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "educacion-cordoba-rendimiento-academico",
+      "title": "Educación en Córdoba - Rendimiento Académico",
+      "description": "Datos de rendimiento académico por centros educativos en Córdoba, con información desagregada por distrito y nivel educativo.",
+      "categories": [
+        "EDUCACIÓN"
+      ],
+      "publisher": "Consejería de Educación de Andalucía",
+      "license": "Open Government",
+      "modified": "04/01/2025",
+      "published": "04/01/2025",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "INSPIRE",
+      "icon": "GraduationCap"
+    },
+    "details": {
+      "id": "educacion-cordoba-rendimiento-academico",
+      "title": "Educación en Córdoba - Rendimiento Académico",
+      "description": "Datos de rendimiento académico por centros educativos en Córdoba.",
+      "icon": "GraduationCap",
+      "categories": [
+        "EDUCACIÓN"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Consejería de Educación de Andalucía"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "comercio-exterior-cordoba-exportaciones-importaciones",
+    "title": "Comercio Exterior Córdoba - Exportaciones e Importaciones",
+    "description": "Datos de exportaciones e importaciones de Córdoba, segmentados por país y sector.",
+    "icon": "Globe",
+    "accessDate": "02/01/2025",
+    "expiryDate": "02/07/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "comercio-exterior-cordoba-exportaciones-importaciones",
+      "title": "Comercio Exterior Córdoba - Exportaciones e Importaciones",
+      "description": "Datos de exportaciones e importaciones de Córdoba, segmentados por país y sector.",
+      "categories": [
+        "FINANZAS"
+      ],
+      "publisher": "Cámara de Comercio de Córdoba",
+      "license": "Open Data",
+      "modified": "02/01/2025",
+      "published": "02/01/2025",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "UNCTAD",
+      "icon": "Globe"
+    },
+    "details": {
+      "id": "comercio-exterior-cordoba-exportaciones-importaciones",
+      "title": "Comercio Exterior Córdoba - Exportaciones e Importaciones",
+      "description": "Datos de exportaciones e importaciones de Córdoba.",
+      "icon": "Globe",
+      "categories": [
+        "FINANZAS"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Cámara de Comercio de Córdoba"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": null,
+    "id": "vivienda-construccion-licencias-obras",
+    "title": "Vivienda y Construcción - Licencias y Obras",
+    "description": "Datos sobre licencias y obras de vivienda y construcción en Córdoba, con información por distrito y tipo de obra.",
+    "icon": "Home",
+    "accessDate": "20/01/2025",
+    "expiryDate": "20/01/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "vivienda-construccion-licencias-obras",
+      "title": "Vivienda y Construcción - Licencias y Obras",
+      "description": "Datos sobre licencias y obras de vivienda y construcción en Córdoba, con información por distrito y tipo de obra.",
+      "categories": [
+        "URBANISMO"
+      ],
+      "publisher": "Ayuntamiento de Córdoba",
+      "license": "Open Data",
+      "modified": "20/01/2025",
+      "published": "20/01/2025",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "ISO 21930",
+      "icon": "Home"
+    },
+    "details": {
+      "id": "vivienda-construccion-licencias-obras",
+      "title": "Vivienda y Construcción - Licencias y Obras",
+      "description": "Datos sobre licencias y obras de vivienda y construcción en Córdoba.",
+      "icon": "Home",
+      "categories": [
+        "URBANISMO"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Ayuntamiento de Córdoba"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  },
+  {
+    "hasAccess": "access",
+    "id": "gestion-recursos-hidricos-cordoba",
+    "title": "Gestión de Recursos Hídricos Córdoba",
+    "description": "Datos sobre gestión de recursos hídricos en Córdoba, incluyendo consumo, calidad y distribución.",
+    "icon": "Water",
+    "accessDate": "14/01/2025",
+    "expiryDate": "14/07/2027",
+    "formats": [
+      "CSV"
+    ],
+    "size": "N/D",
+    "catalog": {
+      "id": "gestion-recursos-hidricos-cordoba",
+      "title": "Gestión de Recursos Hídricos Córdoba",
+      "description": "Datos sobre gestión de recursos hídricos en Córdoba, incluyendo consumo, calidad y distribución.",
+      "categories": [
+        "MEDIO AMBIENTE"
+      ],
+      "publisher": "Emproacsa",
+      "license": "Open Data",
+      "modified": "14/01/2025",
+      "published": "14/01/2025",
+      "distribution": "CSV",
+      "quality": "Alta",
+      "standard": "ISO 14001",
+      "icon": "Water"
+    },
+    "details": {
+      "id": "gestion-recursos-hidricos-cordoba",
+      "title": "Gestión de Recursos Hídricos Córdoba",
+      "description": "Datos sobre gestión de recursos hídricos en Córdoba.",
+      "icon": "Water",
+      "categories": [
+        "MEDIO AMBIENTE"
+      ],
+      "metadata": [
+        {
+          "label": "Publisher",
+          "value": "Emproacsa"
+        },
+        {
+          "label": "Licencia",
+          "value": "Open Data Commons Attribution (ODC-By)"
+        },
+        {
+          "label": "Modificado",
+          "value": "2024-05-22T10:30:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Creado",
+          "value": "2023-01-10T08:00:00Z",
+          "isMonospace": true
+        },
+        {
+          "label": "Idioma",
+          "value": "ES",
+          "isMonospace": true
+        },
+        {
+          "label": "Cobertura Espacial",
+          "value": "Córdoba (ES613)"
+        },
+        {
+          "label": "Estándar",
+          "value": "DCAT-AP 2.1.1",
+          "isMonospace": true
+        }
+      ],
+      "distributions": [
+        {
+          "id": "api-realtime",
+          "title": "API Tiempo Real Aucorsa",
+          "format": "JSON",
+          "status": "available",
+          "icon": "Zap",
+          "lastUpdated": "Hace 30 seg"
+        },
+        {
+          "id": "historic-monthly",
+          "title": "Histórico Mensual Pasajeros",
+          "format": "CSV",
+          "status": "available",
+          "icon": "Clock",
+          "size": "850 MB"
+        },
+        {
+          "id": "network-map",
+          "title": "Mapa Red Metropolitana",
+          "format": "KML",
+          "status": "available",
+          "icon": "Map",
+          "type": "GeoData"
+        }
+      ],
+      "odrlPolicy": "{\n  \"@context\": {\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"schema\": \"https://schema.org/\"\n  },\n  \"@type\": \"odrl:Set\",\n  \"@id\": \"https://dataspaces.es/policy/flamenco-heritage-subscription-v1\",\n  \"dct:title\": \"Política de uso — Conservación del patrimonio del flamenco (suscripción mensual)\",\n  \"dct:description\": \"Condiciones de acceso y uso para un recurso orientado a conservación, catalogación e investigación del patrimonio del flamenco. Modelo por suscripción mensual. Enfoque conservador: uso interno, no redistribución y obligaciones básicas de atribución y seguridad.\",\n  \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n  \"odrl:profile\": \"https://www.w3.org/ns/odrl/2/\",\n  \"odrl:assigner\": \"did:web:provider.example.org\",\n  \"odrl:assignee\": \"did:web:subscriber.example.org\",\n  \"odrl:permission\": [\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": [\n        { \"@id\": \"odrl:read\" },\n        { \"@id\": \"odrl:use\" }\n      ],\n      \"dct:description\": \"Lectura y uso interno del recurso mientras la suscripción esté activa.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:compensate\" },\n          \"dct:description\": \"Pago por suscripción mensual para mantener el acceso.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payAmount\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": 49\n            },\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:payCurrency\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"EUR\"\n            }\n          ],\n          \"schema:billingDuration\": \"P1M\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:attribution\" },\n          \"dct:description\": \"Obligatorio citar la fuente en publicaciones, informes y materiales educativos.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:attribute\" },\n              \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n              \"odrl:rightOperand\": \"Cita sugerida: 'Repositorio Patrimonio Flamenco (Proveedor TBD), versión/fecha de acceso TBD'.\"\n            }\n          ]\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:secure\" },\n          \"dct:description\": \"Medidas mínimas: cuentas nominales, no compartir credenciales, cifrado en reposo si se descarga, y control de acceso a copias locales.\"\n        },\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:log\" },\n          \"dct:description\": \"Conservar un registro básico de accesos/descargas para auditoría durante 90 días.\",\n          \"odrl:constraint\": [\n            {\n              \"@type\": \"odrl:Constraint\",\n              \"odrl:leftOperand\": { \"@id\": \"odrl:elapsedTime\" },\n              \"odrl:operator\": { \"@id\": \"odrl:gteq\" },\n              \"odrl:rightOperand\": { \"@value\": \"P90D\", \"@type\": \"xsd:duration\" }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"@type\": \"odrl:Permission\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:derive\" },\n      \"dct:description\": \"Se permiten trabajos derivados (p. ej. análisis, índices, anotaciones) SOLO para uso interno y educativo.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:in\" },\n          \"odrl:rightOperand\": [\n            \"heritage-preservation\",\n            \"cataloguing\",\n            \"research\",\n            \"education\"\n          ]\n        }\n      ],\n      \"odrl:duty\": [\n        {\n          \"@type\": \"odrl:Duty\",\n          \"odrl:action\": { \"@id\": \"odrl:anonymize\" },\n          \"dct:description\": \"Si el recurso incluye datos personales (p. ej. entrevistas), publicar derivados solo en formato anonimizado/agrupado cuando proceda.\"\n        }\n      ]\n    }\n  ],\n  \"odrl:prohibition\": [\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:distribute\" },\n      \"dct:description\": \"Prohibida la redistribución del recurso o copias a terceros (incluye compartir ficheros, rehosting, o acceso a usuarios no suscritos).\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:sell\" },\n      \"dct:description\": \"Prohibida la reventa o sublicencia del recurso, total o parcial.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:commercialize\" },\n      \"dct:description\": \"Prohibido usar el recurso para explotación comercial directa (p. ej. producto/servicio basado en los contenidos) sin acuerdo específico con el proveedor.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"advertising\"\n        }\n      ],\n      \"dct:description\": \"Prohibido el uso para publicidad/segmentación.\"\n    },\n    {\n      \"@type\": \"odrl:Prohibition\",\n      \"odrl:target\": \"https://dataspaces.es/catalog/dataset/flamenco-heritage\",\n      \"odrl:action\": { \"@id\": \"odrl:use\" },\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:purpose\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"training-ai-foundation-model\"\n        }\n      ],\n      \"dct:description\": \"Prohibido usar el recurso para entrenar modelos de IA de propósito general (salvo acuerdo explícito).\"\n    }\n  ],\n  \"odrl:obligation\": [\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:delete\" },\n      \"dct:description\": \"Al finalizar la suscripción, eliminar copias locales/descargas y conservar únicamente resultados agregados/anotaciones propias que no reproduzcan el contenido original.\"\n    },\n    {\n      \"@type\": \"odrl:Duty\",\n      \"odrl:action\": { \"@id\": \"odrl:inform\" },\n      \"dct:description\": \"Notificar incidentes de seguridad (filtración, acceso no autorizado) en un máximo de 72 horas.\",\n      \"odrl:constraint\": [\n        {\n          \"@type\": \"odrl:Constraint\",\n          \"odrl:leftOperand\": { \"@id\": \"odrl:recipient\" },\n          \"odrl:operator\": { \"@id\": \"odrl:eq\" },\n          \"odrl:rightOperand\": \"mailto:security@provider.example.org\"\n        }\n      ]\n    }\n  ]\n}"
+    }
+  }
+]

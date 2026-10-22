@@ -1,0 +1,432 @@
+[
+  {
+    "name": "Afganistán",
+    "code": "AF",
+    "flag": "🇦🇫"
+  },
+  {
+    "name": "Islas Åland",
+    "code": "AX",
+    "flag": "🇦🇽"
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "flag": "🇦🇱"
+  },
+  {
+    "name": "Argelia",
+    "code": "DZ",
+    "flag": "🇩🇿"
+  },
+  {
+    "name": "Samoa Americana",
+    "code": "AS",
+    "flag": "🇦🇸"
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "flag": "🇦🇩"
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "flag": "🇦🇴"
+  },
+  {
+    "name": "Anguila",
+    "code": "AI",
+    "flag": "🇦🇮"
+  },
+  {
+    "name": "Antártida",
+    "code": "AQ",
+    "flag": "🇦🇶"
+  },
+  {
+    "name": "Antigua y Barbuda",
+    "code": "AG",
+    "flag": "🇦🇬"
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "flag": "🇦🇷"
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "flag": "🇦🇲"
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "flag": "🇦🇼"
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "flag": "🇦🇺"
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "flag": "🇦🇹"
+  },
+  {
+    "name": "Azerbaiyán",
+    "code": "AZ",
+    "flag": "🇦🇿"
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "flag": "🇧🇸"
+  },
+  {
+    "name": "Baréin",
+    "code": "BH",
+    "flag": "🇧🇭"
+  },
+  {
+    "name": "Bangladés",
+    "code": "BD",
+    "flag": "🇧🇩"
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "flag": "🇧🇧"
+  },
+  {
+    "name": "Bielorrusia",
+    "code": "BY",
+    "flag": "🇧🇾"
+  },
+  {
+    "name": "Bélgica",
+    "code": "BE",
+    "flag": "🇧🇪"
+  },
+  {
+    "name": "Belice",
+    "code": "BZ",
+    "flag": "🇧🇿"
+  },
+  {
+    "name": "Benín",
+    "code": "BJ",
+    "flag": "🇧🇯"
+  },
+  {
+    "name": "Bermudas",
+    "code": "BM",
+    "flag": "🇧🇲"
+  },
+  {
+    "name": "Bután",
+    "code": "BT",
+    "flag": "🇧🇹"
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "flag": "🇧🇴"
+  },
+  {
+    "name": "Bosnia y Herzegovina",
+    "code": "BA",
+    "flag": "🇧🇦"
+  },
+  {
+    "name": "Botsuana",
+    "code": "BW",
+    "flag": "🇧🇼"
+  },
+  {
+    "name": "Isla Bouvet",
+    "code": "BV",
+    "flag": "🇧🇻"
+  },
+  {
+    "name": "Brasil",
+    "code": "BR",
+    "flag": "🇧🇷"
+  },
+  {
+    "name": "Territorio Británico del Océano Índico",
+    "code": "IO",
+    "flag": "🇮🇴"
+  },
+  {
+    "name": "Brunéi",
+    "code": "BN",
+    "flag": "🇧🇳"
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "flag": "🇧🇬"
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "flag": "🇧🇫"
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "flag": "🇧🇮"
+  },
+  {
+    "name": "Camboya",
+    "code": "KH",
+    "flag": "🇰🇭"
+  },
+  {
+    "name": "Camerún",
+    "code": "CM",
+    "flag": "🇨🇲"
+  },
+  {
+    "name": "Canadá",
+    "code": "CA",
+    "flag": "🇨🇦"
+  },
+  {
+    "name": "Cabo Verde",
+    "code": "CV",
+    "flag": "🇨🇻"
+  },
+  {
+    "name": "Islas Caimán",
+    "code": "KY",
+    "flag": "🇰🇾"
+  },
+  {
+    "name": "República Centroafricana",
+    "code": "CF",
+    "flag": "🇨🇫"
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "flag": "🇹🇩"
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "flag": "🇨🇱"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "flag": "🇨🇳"
+  },
+  {
+    "name": "Isla de Navidad",
+    "code": "CX",
+    "flag": "🇨🇽"
+  },
+  {
+    "name": "Islas Cocos",
+    "code": "CC",
+    "flag": "🇨🇨"
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "flag": "🇨🇴"
+  },
+  {
+    "name": "Comoras",
+    "code": "KM",
+    "flag": "🇰🇲"
+  },
+  {
+    "name": "Congo",
+    "code": "CG",
+    "flag": "🇨🇬"
+  },
+  {
+    "name": "República Democrática del Congo",
+    "code": "CD",
+    "flag": "🇨🇩"
+  },
+  {
+    "name": "Islas Cook",
+    "code": "CK",
+    "flag": "🇨🇰"
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "flag": "🇨🇷"
+  },
+  {
+    "name": "Costa de Marfil",
+    "code": "CI",
+    "flag": "🇨🇮"
+  },
+  {
+    "name": "Croacia",
+    "code": "HR",
+    "flag": "🇭🇷"
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "flag": "🇨🇺"
+  },
+  {
+    "name": "Chipre",
+    "code": "CY",
+    "flag": "🇨🇾"
+  },
+  {
+    "name": "República Checa",
+    "code": "CZ",
+    "flag": "🇨🇿"
+  },
+  {
+    "name": "Dinamarca",
+    "code": "DK",
+    "flag": "🇩🇰"
+  },
+  {
+    "name": "Yibuti",
+    "code": "DJ",
+    "flag": "🇩🇯"
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "flag": "🇩🇲"
+  },
+  {
+    "name": "República Dominicana",
+    "code": "DO",
+    "flag": "🇩🇴"
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "flag": "🇪🇨"
+  },
+  {
+    "name": "Egipto",
+    "code": "EG",
+    "flag": "🇪🇬"
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "flag": "🇸🇻"
+  },
+  {
+    "name": "Guinea Ecuatorial",
+    "code": "GQ",
+    "flag": "🇬🇶"
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "flag": "🇪🇷"
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "flag": "🇪🇪"
+  },
+  {
+    "name": "Etiopía",
+    "code": "ET",
+    "flag": "🇪🇹"
+  },
+  {
+    "name": "España",
+    "code": "ES",
+    "flag": "🇪🇸"
+  },
+  {
+    "name": "Estados Unidos",
+    "code": "US",
+    "flag": "🇺🇸"
+  },
+  {
+    "name": "México",
+    "code": "MX",
+    "flag": "🇲🇽"
+  },
+  {
+    "name": "Perú",
+    "code": "PE",
+    "flag": "🇵🇪"
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "flag": "🇵🇹"
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "flag": "🇺🇾"
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "flag": "🇻🇪"
+  },
+  {
+    "name": "Alemania",
+    "code": "DE",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Francia",
+    "code": "FR",
+    "flag": "🇫🇷"
+  },
+  {
+    "name": "Italia",
+    "code": "IT",
+    "flag": "🇮🇹"
+  },
+  {
+    "name": "Reino Unido",
+    "code": "GB",
+    "flag": "🇬🇧"
+  },
+  {
+    "name": "Japón",
+    "code": "JP",
+    "flag": "🇯🇵"
+  },
+  {
+    "name": "Corea del Sur",
+    "code": "KR",
+    "flag": "🇰🇷"
+  },
+  {
+    "name": "Corea del Norte",
+    "code": "KP",
+    "flag": "🇰🇵"
+  },
+  {
+    "name": "Rusia",
+    "code": "RU",
+    "flag": "🇷🇺"
+  },
+  {
+    "name": "Sudáfrica",
+    "code": "ZA",
+    "flag": "🇿🇦"
+  },
+  {
+    "name": "Zimbabue",
+    "code": "ZW",
+    "flag": "🇿🇼"
+  }
+]
