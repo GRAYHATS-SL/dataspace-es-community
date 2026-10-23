@@ -57,3 +57,6 @@ ehthumbs.db
 *.swo
 .vscode/extensions.json
 /.claude/settings.json
+
+# Documentation
+docs/

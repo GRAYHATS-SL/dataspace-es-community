@@ -22,6 +22,12 @@ Adaptación del portal a la infraestructura v2 del marketplace (`marketplacev2.d
 - Catálogo público limitado a los cinco listados de la v2, solo `GET`.
 - Organizaciones de solo lectura, con `status` `validated` o `closed`.
 
+## [0.14.1]
+
+### Seguridad
+
+- Node.js actualizado a 24.22.1 (versión fijada en `.nvmrc` y `engines`) para incorporar las correcciones del boletín de seguridad de octubre de 2026.
+
 ## [0.14.0]
 
 ### Añadido
@@ -146,6 +152,7 @@ Adaptación del portal a la infraestructura v2 del marketplace (`marketplacev2.d
 - Autenticación simulada y esqueleto del dashboard.
 
 [0.15.0]: #0150---en-curso
+[0.14.1]: #0141
 [0.14.0]: #0140
 [0.13.0]: #0130
 [0.12.0]: #0120
