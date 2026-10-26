@@ -3,7 +3,7 @@ import { setTimeout as sleep } from 'node:timers/promises'
 import { BlockchainError, type BlockchainClient, type StampReceipt } from './types.js'
 
 /**
- * Blockchain simulada en memoria para trabajar sin red. Reproduce el
+ * Blockchain simulada en memoria para trabajar sin red ISBE. Reproduce el
  * comportamiento de HashTimestamp (un hash solo se puede registrar una vez), pero
  * los datos se pierden al reiniciar el proceso: no sirve como prueba de nada.
  */
@@ -13,7 +13,7 @@ export class MockBlockchainClient implements BlockchainClient {
     private readonly stamps = new Map<string, StampReceipt>()
     private blockNumber = 0
 
-    constructor(private readonly latencyMs = 0) { }
+    constructor(private readonly latencyMs = 0) {}
 
     async stamp(hash: string, onSubmitted?: (txHash: string) => Promise<void>): Promise<StampReceipt> {
         if (this.stamps.has(hash))
@@ -43,5 +43,5 @@ export class MockBlockchainClient implements BlockchainClient {
         return { ok: true, detail: `Simulada en memoria (${this.stamps.size} hashes); se pierde al reiniciar` }
     }
 
-    async close(): Promise<void> { }
+    async close(): Promise<void> {}
 }

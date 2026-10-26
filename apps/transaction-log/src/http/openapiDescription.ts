@@ -1,8 +1,8 @@
 export const API_DESCRIPTION = `
-Servicio de **registro de operaciones de pedido con sello de tiempo en la blockchain**.
+Servicio de **registro de operaciones de pedido con sello de tiempo en la blockchain ISBE**.
 
 Cada operación recibida (pedido + oferta + comprador) se convierte en un hash con *salt*; ese hash se
-registra en el contrato **HashTimestamp**, que certifica que la operación existía en esa fecha,
+registra en el contrato **HashTimestamp** de ISBE, que certifica que la operación existía en esa fecha,
 y el registro completo se guarda en MongoDB usando el hash como identificador (\`_id\`).
 
 ## Flujo de \`POST /transactions\`
@@ -12,6 +12,7 @@ y el registro completo se guarda en MongoDB usando el hash como identificador (\
 3. Se genera un *salt* aleatorio de 32 bytes y se calcula el hash (ver abajo).
 4. Se guarda el registro en la base de datos con estado \`pending\`.
 5. Se registra el hash en la blockchain y **se espera a que quede confirmado en un bloque**
+   (≈ 2 s en ISBE; máximo \`ISBE_CONFIRMATION_TIMEOUT_MS\`).
 6. Se actualiza el registro a \`confirmed\` con la transacción, el bloque y su fecha → **201**.
 
 Si la blockchain falla en el paso 5, el registro **no se pierde**: queda en estado \`failed\` con el error
@@ -48,7 +49,7 @@ el hash público en la blockchain, alguien pueda adivinar los identificadores pr
 
 ## Modos de blockchain
 
-- **\`real\`**: registra en la red
+- **\`isbe\`**: registra en la red ISBE
 - **\`mock\`**: blockchain simulada en memoria para desarrollo. Se pierde al reiniciar y **no tiene valor
   probatorio**; los registros indican \`network: "mock"\`.
 
@@ -62,7 +63,7 @@ Todas las respuestas de error tienen el formato \`ErrorResponse\` con un \`code\
 | 401 | \`UNAUTHORIZED\` | Falta o es incorrecta la cabecera \`x-api-key\` (solo si el servicio tiene \`API_KEY\`) |
 | 404 | \`NOT_FOUND\` | No existe un registro con ese hash |
 | 409 | \`DUPLICATE_ORDER\` | El \`id_product_order\` ya está registrado |
-| 502 | \`BLOCKCHAIN_UNAVAILABLE\` | No se puede contactar con la red |
+| 502 | \`BLOCKCHAIN_UNAVAILABLE\` | No se puede contactar con la red ISBE |
 | 502 | \`CONFIRMATION_TIMEOUT\` | La transacción no se confirmó a tiempo (puede confirmarse después: usar *retry*) |
 | 502 | \`MISSING_ROLE\` | La cuenta del servicio no tiene \`HASH_TIMESTAMP_ROLE\` en el contrato |
 | 502 | \`CONTRACT_PAUSED\` | El contrato HashTimestamp está pausado |

@@ -48,7 +48,7 @@ export const transactionRoutes: FastifyPluginAsyncTypebox<TransactionRoutesOptio
                 operationId: 'registerTransaction',
                 summary: 'Registrar una operación',
                 description:
-                    'Hashea la operación con un salt nuevo, guarda el registro y sella el hash en la blockchain, ' +
+                    'Hashea la operación con un salt nuevo, guarda el registro y sella el hash en la blockchain ISBE, ' +
                     '**esperando a la confirmación** antes de responder (≈ 2 s). Ver el flujo completo en la descripción general.',
                 security,
                 body: TransactionInput,
@@ -62,8 +62,8 @@ export const transactionRoutes: FastifyPluginAsyncTypebox<TransactionRoutesOptio
                     ),
                     502: errorRef(
                         'El registro se guardó pero la blockchain falló (BLOCKCHAIN_UNAVAILABLE, CONFIRMATION_TIMEOUT, MISSING_ROLE, ' +
-                        'CONTRACT_PAUSED, TRANSACTION_REVERTED). El campo record contiene el registro en estado failed; ' +
-                        'se puede reintentar con POST /transactions/{hash}/retry.'
+                            'CONTRACT_PAUSED, TRANSACTION_REVERTED). El campo record contiene el registro en estado failed; ' +
+                            'se puede reintentar con POST /transactions/{hash}/retry.'
                     ),
                 },
             },

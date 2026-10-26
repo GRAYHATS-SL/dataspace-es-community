@@ -6,7 +6,7 @@ import type { TransactionRepository } from '../../db/transactionRepository.js'
 export type HealthRoutesOptions = {
     repository: TransactionRepository
     blockchain: BlockchainClient
-    blockchainMode: 'real' | 'mock'
+    blockchainMode: 'isbe' | 'mock'
 }
 
 export const healthRoutes: FastifyPluginAsyncTypebox<HealthRoutesOptions> = async (app, { repository, blockchain, blockchainMode }) => {

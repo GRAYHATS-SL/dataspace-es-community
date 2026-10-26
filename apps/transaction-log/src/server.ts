@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 import { buildApp } from './app.js'
-import { BlockchainHashTimestampClient } from './blockchain/realClient.js'
+import { IsbeHashTimestampClient } from './blockchain/isbeClient.js'
 import { MockBlockchainClient } from './blockchain/mockClient.js'
 import type { BlockchainClient } from './blockchain/types.js'
 import { loadConfig } from './config.js'
@@ -15,8 +15,8 @@ await mongo.connect()
 const db = mongo.db(config.mongodbDb)
 
 const blockchain: BlockchainClient =
-    config.blockchain.mode === 'real'
-        ? new BlockchainHashTimestampClient(config.blockchain)
+    config.blockchain.mode === 'isbe'
+        ? new IsbeHashTimestampClient(config.blockchain)
         : new MockBlockchainClient(config.blockchain.latencyMs)
 
 const app = await buildApp({

@@ -10,7 +10,7 @@ const unused = new Proxy({} as TransactionRepository, {
 const app = await buildApp({
     repository: unused,
     blockchain: new MockBlockchainClient(),
-    blockchainMode: 'real',
+    blockchainMode: 'isbe',
     publicUrl: process.env.PUBLIC_URL ?? 'http://localhost:3000',
 })
 await app.ready()

@@ -36,7 +36,7 @@ export const transactionValidator = {
     $jsonSchema: {
         bsonType: 'object',
         title: TRANSACTION_COLLECTION,
-        description: 'Operaciones de pedido cuyo hash se ha sellado (o intentado sellar) en la blockchain',
+        description: 'Operaciones de pedido cuyo hash se ha sellado (o intentado sellar) en la blockchain ISBE',
         required: ['_id', 'id_product_order', 'id_product_offer', 'id_buyer', 'salt', 'hash_scheme', 'created_at', 'updated_at', 'blockchain'],
         additionalProperties: false,
         properties: {
@@ -66,7 +66,7 @@ export const transactionValidator = {
                         enum: ['pending', 'confirmed', 'failed'],
                         description: 'pending: enviando; confirmed: sellado en un bloque; failed: error, se puede reintentar',
                     },
-                    network: { bsonType: 'string', description: 'Red donde se registró, p. ej. "besu-local (chainId 11073)" o "mock"' },
+                    network: { bsonType: 'string', description: 'Red donde se registró, p. ej. "isbe-local (chainId 11073)" o "mock"' },
                     contract_address: {
                         bsonType: ['string', 'null'],
                         description: 'Proxy HashTimestamp donde se registró el hash (null en modo mock)',
@@ -115,7 +115,7 @@ const NAMESPACE_EXISTS = 48
  * Crea la colección con su validador e índices, o los actualiza si ya existe.
  * Es idempotente: se puede ejecutar en cada arranque.
  */
-export async function ensureSchema(db: Db, log: (message: string) => void = () => { }): Promise<void> {
+export async function ensureSchema(db: Db, log: (message: string) => void = () => {}): Promise<void> {
     const options = { validator: transactionValidator, validationLevel: 'strict', validationAction: 'error' } as const
     const exists = await db.listCollections({ name: TRANSACTION_COLLECTION }, { nameOnly: true }).hasNext()
     let created = false

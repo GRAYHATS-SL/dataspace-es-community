@@ -1,5 +1,5 @@
 import { Contract, FetchRequest, JsonRpcProvider, Wallet, isError, type EventLog } from 'ethers'
-import type { RealBlockchainConfig } from '../config.js'
+import type { IsbeBlockchainConfig } from '../config.js'
 import { BlockchainError, type BlockchainClient, type StampReceipt } from './types.js'
 import hashTimestampAbi from './abi/HashTimestamp.json' with { type: 'json' }
 
@@ -11,7 +11,7 @@ import hashTimestampAbi from './abi/HashTimestamp.json' with { type: 'json' }
  * nonces propio; la espera de confirmación sí es concurrente. Si se despliegan
  * varias instancias del servicio, cada una debe usar su propia cuenta.
  */
-export class BlockchainHashTimestampClient implements BlockchainClient {
+export class IsbeHashTimestampClient implements BlockchainClient {
     readonly network: string
     readonly contractAddress: string
     private readonly provider: JsonRpcProvider
@@ -21,7 +21,7 @@ export class BlockchainHashTimestampClient implements BlockchainClient {
     private sendQueue: Promise<unknown> = Promise.resolve()
     private nextNonce: number | null = null
 
-    constructor(config: RealBlockchainConfig) {
+    constructor(config: IsbeBlockchainConfig) {
         const request = new FetchRequest(config.rpcUrl)
         request.timeout = config.rpcTimeoutMs
         this.provider = new JsonRpcProvider(request, config.chainId, {

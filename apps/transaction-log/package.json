@@ -11,7 +11,7 @@
     "test": "node --import tsx --test test/jsonHash.test.ts test/api.test.ts test/mongoRepository.test.ts",
     "db:setup": "tsx src/scripts/setupDb.ts"
   },
-  "description": "Servicio que registra operaciones de pedido: hashea el JSON con salt, sella el hash en la blockchain y guarda el registro en MongoDB",
+  "description": "Servicio que registra operaciones de pedido: hashea el JSON con salt, sella el hash en la blockchain ISBE y guarda el registro en MongoDB",
   "dependencies": {
     "@fastify/swagger": "^9.9.2",
     "@fastify/swagger-ui": "^6.1.2",

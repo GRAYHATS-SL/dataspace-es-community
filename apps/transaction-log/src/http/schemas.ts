@@ -10,7 +10,7 @@ const HEX_32 = '^0x[0-9a-fA-F]{64}$'
 // Sin espacios al principio ni al final: "ORD-1" y "ORD-1 " serían pedidos distintos
 const TRIMMED = '^\\S(.*\\S)?$'
 
-// Los ejemplos son una operación real registrada en la red besu local (bloque 19803):
+// Los ejemplos son una operación real registrada en la red ISBE local (bloque 19803):
 // el ejemplo de POST /transactions/verify devuelve verified = true contra esa red.
 const EXAMPLE_INPUT = {
     id_product_order: 'ORD-DEMO-0001',
@@ -21,7 +21,7 @@ const EXAMPLE_HASH = '0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e4
 const EXAMPLE_SALT = '0x839ba520aefeb7ce9678eb26a2e88db9a7cd30153b76e794acbb0d6bd57b0990'
 const EXAMPLE_BLOCKCHAIN = {
     status: 'confirmed',
-    network: 'besu-local (chainId 11073)',
+    network: 'isbe-local (chainId 11073)',
     contract_address: '0x98717d1775AE066A18fad55142A5A85EbfA3E067',
     tx_hash: '0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c',
     block_number: 19803,
@@ -118,16 +118,16 @@ export const BlockchainInfo = Type.Object(
         }),
         network: Type.String({
             description: 'Red en la que se registró. "mock" significa blockchain simulada (sin valor probatorio).',
-            examples: ['besu-local (chainId 11073)'],
+            examples: ['isbe-local (chainId 11073)'],
         }),
         contract_address: nullable(
             Type.String({ examples: ['0x98717d1775AE066A18fad55142A5A85EbfA3E067'] }),
-            'Proxy HashTimestamp donde está registrado el hash. null en modo mock.'
+            'Proxy HashTimestamp de ISBE donde está registrado el hash. null en modo mock.'
         ),
         tx_hash: nullable(
             Type.String(),
             'Hash de la transacción enviada a la blockchain. Se guarda en cuanto se envía, así que puede tener valor ' +
-            'aunque status sea pending o failed (p. ej. tras un CONFIRMATION_TIMEOUT); null si nunca se llegó a enviar.'
+                'aunque status sea pending o failed (p. ej. tras un CONFIRMATION_TIMEOUT); null si nunca se llegó a enviar.'
         ),
         block_number: nullable(Type.Integer(), 'Bloque en el que quedó registrado. null si no está confirmado.'),
         block_timestamp: nullable(
@@ -186,7 +186,7 @@ export const VerificationResponse = Type.Object(
         hash_matches: nullable(
             Type.Boolean(),
             'Solo al verificar un registro del log: true si recalcular el hash con los campos y el salt guardados da el mismo hash ' +
-            '(false indicaría que el registro de la base de datos se ha alterado). null al verificar datos aportados.'
+                '(false indicaría que el registro de la base de datos se ha alterado). null al verificar datos aportados.'
         ),
         on_chain: Type.Boolean({ description: 'true si el hash está registrado en la blockchain consultada.' }),
         on_chain_timestamp: nullable(
@@ -259,7 +259,7 @@ export const HealthResponse = Type.Object(
         database: Type.Object({ ok: Type.Boolean(), detail: Type.String() }),
         blockchain: Type.Object({
             ok: Type.Boolean(),
-            mode: Type.Union([Type.Literal('real'), Type.Literal('mock')]),
+            mode: Type.Union([Type.Literal('isbe'), Type.Literal('mock')]),
             network: Type.String(),
             detail: Type.String(),
         }),

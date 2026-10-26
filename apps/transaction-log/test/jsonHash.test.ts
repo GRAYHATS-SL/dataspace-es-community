@@ -19,7 +19,7 @@ describe('canonicalize (JCS / RFC 8785)', () => {
 })
 
 describe('hashJson', () => {
-    it('reproduce el hash registrado en la red local por mi-contrato (vector cruzado)', () => {
+    it('reproduce el hash registrado en la red ISBE local por mi-contrato (vector cruzado)', () => {
         // mi-contrato/samples/operacion-ejemplo.json + su recibo: este hash está sellado en el bloque 8685
         const json = {
             operacionId: 'OP-2026-000123',

@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Transaction Log",
+    "title": "Transaction Log · ISBE",
     "version": "0.1.0",
-    "description": "Servicio de **registro de operaciones de pedido con sello de tiempo en la blockchain**.\n\nCada operación recibida (pedido + oferta + comprador) se convierte en un hash con *salt*; ese hash se\nregistra en el contrato **HashTimestamp** , que certifica que la operación existía en esa fecha,\ny el registro completo se guarda en MongoDB usando el hash como identificador (`_id`).\n\n## Flujo de `POST /transactions`\n\n1. Se valida el JSON: exactamente `id_product_order`, `id_product_offer` e `id_buyer`.\n2. Si el `id_product_order` ya está registrado → **409** con el registro existente.\n3. Se genera un *salt* aleatorio de 32 bytes y se calcula el hash (ver abajo).\n4. Se guarda el registro en la base de datos con estado `pending`.\n5. Se registra el hash en la blockchain y **se espera a que quede confirmado en un bloque**\n  \n6. Se actualiza el registro a `confirmed` con la transacción, el bloque y su fecha → **201**.\n\nSi la blockchain falla en el paso 5, el registro **no se pierde**: queda en estado `failed` con el error\ny la respuesta es **502**. Se puede reintentar con `POST /transactions/{hash}/retry` (mismo hash y salt).\n\n## Cómo se calcula el hash (`hash_scheme = sha256-jcs-salt32-v1`)\n\n```\ncanonical = JCS(json)              RFC 8785: claves ordenadas, sin espacios\nsalt      = 32 bytes aleatorios    uno nuevo por operación\nhash      = SHA-256( salt || UTF-8(canonical) )\n```\n\nEjemplo de `canonical` para la operación de ejemplo:\n`{\"id_buyer\":\"BUY-777\",\"id_product_offer\":\"OFF-500\",\"id_product_order\":\"ORD-DEMO-0001\"}`\n\nCualquiera que tenga los tres campos y el salt puede recalcular el hash con cualquier lenguaje y\ncomprobarlo en la blockchain: por eso el salt se guarda y se devuelve. El *salt* evita que, viendo solo\nel hash público en la blockchain, alguien pueda adivinar los identificadores probando combinaciones.\n\n## Estados del sellado (`blockchain.status`)\n\n| Estado | Significado |\n|---|---|\n| `pending` | Guardado; la transacción se está enviando o esperando confirmación |\n| `confirmed` | Sellado en un bloque. `block_timestamp` es la fecha certificada |\n| `failed` | La blockchain falló. Ver `blockchain.error`. Reintentable |\n\n## Verificación\n\n- `GET /transactions/{hash}/verify` comprueba un registro del log: recalcula el hash con sus datos y salt\n  (detecta si la base de datos se ha alterado) y lo busca en la blockchain.\n- `POST /transactions/verify` comprueba datos aportados por un tercero (campos + salt) sin fiarse del log.\n\n## Modos de blockchain\n\n- **`real`**: registra de verdad en una red blockchain basada en etherium \n- **`mock`**: blockchain simulada en memoria para desarrollo. Se pierde al reiniciar y **no tiene valor\n  probatorio**; los registros indican `network: \"mock\"`.\n\n## Errores\n\nTodas las respuestas de error tienen el formato `ErrorResponse` con un `code` estable:\n\n| HTTP | code | Cuándo |\n|---|---|---|\n| 400 | `VALIDATION_ERROR` | JSON inválido, campos que faltan o sobran, valores vacíos |\n| 401 | `UNAUTHORIZED` | Falta o es incorrecta la cabecera `x-api-key` (solo si el servicio tiene `API_KEY`) |\n| 404 | `NOT_FOUND` | No existe un registro con ese hash |\n| 409 | `DUPLICATE_ORDER` | El `id_product_order` ya está registrado |\n| 502 | `BLOCKCHAIN_UNAVAILABLE` | No se puede contactar con la red blockchain |\n| 502 | `CONFIRMATION_TIMEOUT` | La transacción no se confirmó a tiempo (puede confirmarse después: usar *retry*) |\n| 502 | `MISSING_ROLE` | La cuenta del servicio no tiene `HASH_TIMESTAMP_ROLE` en el contrato |\n| 502 | `CONTRACT_PAUSED` | El contrato HashTimestamp está pausado |\n| 502 | `TRANSACTION_REVERTED` | La blockchain rechazó la transacción por otro motivo |\n| 500 | `INTERNAL_ERROR` | Error inesperado (ver logs del servicio) |"
+    "description": "Servicio de **registro de operaciones de pedido con sello de tiempo en la blockchain ISBE**.\n\nCada operación recibida (pedido + oferta + comprador) se convierte en un hash con *salt*; ese hash se\nregistra en el contrato **HashTimestamp** de ISBE, que certifica que la operación existía en esa fecha,\ny el registro completo se guarda en MongoDB usando el hash como identificador (`_id`).\n\n## Flujo de `POST /transactions`\n\n1. Se valida el JSON: exactamente `id_product_order`, `id_product_offer` e `id_buyer`.\n2. Si el `id_product_order` ya está registrado → **409** con el registro existente.\n3. Se genera un *salt* aleatorio de 32 bytes y se calcula el hash (ver abajo).\n4. Se guarda el registro en la base de datos con estado `pending`.\n5. Se registra el hash en la blockchain y **se espera a que quede confirmado en un bloque**\n   (≈ 2 s en ISBE; máximo `ISBE_CONFIRMATION_TIMEOUT_MS`).\n6. Se actualiza el registro a `confirmed` con la transacción, el bloque y su fecha → **201**.\n\nSi la blockchain falla en el paso 5, el registro **no se pierde**: queda en estado `failed` con el error\ny la respuesta es **502**. Se puede reintentar con `POST /transactions/{hash}/retry` (mismo hash y salt).\n\n## Cómo se calcula el hash (`hash_scheme = sha256-jcs-salt32-v1`)\n\n```\ncanonical = JCS(json)              RFC 8785: claves ordenadas, sin espacios\nsalt      = 32 bytes aleatorios    uno nuevo por operación\nhash      = SHA-256( salt || UTF-8(canonical) )\n```\n\nEjemplo de `canonical` para la operación de ejemplo:\n`{\"id_buyer\":\"BUY-777\",\"id_product_offer\":\"OFF-500\",\"id_product_order\":\"ORD-DEMO-0001\"}`\n\nCualquiera que tenga los tres campos y el salt puede recalcular el hash con cualquier lenguaje y\ncomprobarlo en la blockchain: por eso el salt se guarda y se devuelve. El *salt* evita que, viendo solo\nel hash público en la blockchain, alguien pueda adivinar los identificadores probando combinaciones.\n\n## Estados del sellado (`blockchain.status`)\n\n| Estado | Significado |\n|---|---|\n| `pending` | Guardado; la transacción se está enviando o esperando confirmación |\n| `confirmed` | Sellado en un bloque. `block_timestamp` es la fecha certificada |\n| `failed` | La blockchain falló. Ver `blockchain.error`. Reintentable |\n\n## Verificación\n\n- `GET /transactions/{hash}/verify` comprueba un registro del log: recalcula el hash con sus datos y salt\n  (detecta si la base de datos se ha alterado) y lo busca en la blockchain.\n- `POST /transactions/verify` comprueba datos aportados por un tercero (campos + salt) sin fiarse del log.\n\n## Modos de blockchain\n\n- **`isbe`**: registra de verdad en una red ISBE (hoy la red local de pruebas; mañana la red real\n  cambiando solo la configuración).\n- **`mock`**: blockchain simulada en memoria para desarrollo. Se pierde al reiniciar y **no tiene valor\n  probatorio**; los registros indican `network: \"mock\"`.\n\n## Errores\n\nTodas las respuestas de error tienen el formato `ErrorResponse` con un `code` estable:\n\n| HTTP | code | Cuándo |\n|---|---|---|\n| 400 | `VALIDATION_ERROR` | JSON inválido, campos que faltan o sobran, valores vacíos |\n| 401 | `UNAUTHORIZED` | Falta o es incorrecta la cabecera `x-api-key` (solo si el servicio tiene `API_KEY`) |\n| 404 | `NOT_FOUND` | No existe un registro con ese hash |\n| 409 | `DUPLICATE_ORDER` | El `id_product_order` ya está registrado |\n| 502 | `BLOCKCHAIN_UNAVAILABLE` | No se puede contactar con la red ISBE |\n| 502 | `CONFIRMATION_TIMEOUT` | La transacción no se confirmó a tiempo (puede confirmarse después: usar *retry*) |\n| 502 | `MISSING_ROLE` | La cuenta del servicio no tiene `HASH_TIMESTAMP_ROLE` en el contrato |\n| 502 | `CONTRACT_PAUSED` | El contrato HashTimestamp está pausado |\n| 502 | `TRANSACTION_REVERTED` | La blockchain rechazó la transacción por otro motivo |\n| 500 | `INTERNAL_ERROR` | Error inesperado (ver logs del servicio) |"
   },
   "components": {
     "securitySchemes": {
@@ -54,7 +54,7 @@
             "type": "string",
             "description": "Red en la que se registró. \"mock\" significa blockchain simulada (sin valor probatorio).",
             "examples": [
-              "besu-local (chainId 11073)"
+              "isbe-local (chainId 11073)"
             ]
           },
           "contract_address": {
@@ -69,7 +69,7 @@
                 "type": "null"
               }
             ],
-            "description": "Proxy HashTimestamp de la red donde está registrado el hash. null en modo mock."
+            "description": "Proxy HashTimestamp de ISBE donde está registrado el hash. null en modo mock."
           },
           "tx_hash": {
             "anyOf": [
@@ -122,7 +122,7 @@
         "examples": [
           {
             "status": "confirmed",
-            "network": "besu-local (chainId 11073)",
+            "network": "isbe-local (chainId 11073)",
             "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
             "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
             "block_number": 19803,
@@ -206,7 +206,7 @@
             "updated_at": "2026-10-15T15:29:09.270Z",
             "blockchain": {
               "status": "confirmed",
-              "network": "besu-local (chainId 11073)",
+              "network": "isbe-local (chainId 11073)",
               "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
               "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
               "block_number": 19803,
@@ -258,7 +258,7 @@
                 "updated_at": "2026-10-15T15:29:09.270Z",
                 "blockchain": {
                   "status": "confirmed",
-                  "network": "besu-local (chainId 11073)",
+                  "network": "isbe-local (chainId 11073)",
                   "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
                   "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
                   "block_number": 19803,
@@ -350,7 +350,7 @@
             "on_chain": true,
             "on_chain_timestamp": "2026-10-15T15:29:09.000Z",
             "registered_in_log": true,
-            "checked_network": "besu-local (chainId 11073)",
+            "checked_network": "isbe-local (chainId 11073)",
             "record": {
               "hash": "0xa5afb113865f4c52edc0e260254deacafb729a6af6d83481e13d32e498156e3b",
               "id_product_order": "ORD-DEMO-0001",
@@ -362,7 +362,7 @@
               "updated_at": "2026-10-15T15:29:09.270Z",
               "blockchain": {
                 "status": "confirmed",
-                "network": "besu-local (chainId 11073)",
+                "network": "isbe-local (chainId 11073)",
                 "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
                 "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
                 "block_number": 19803,
@@ -429,7 +429,7 @@
               "updated_at": "2026-10-15T15:29:09.270Z",
               "blockchain": {
                 "status": "confirmed",
-                "network": "besu-local (chainId 11073)",
+                "network": "isbe-local (chainId 11073)",
                 "contract_address": "0x98717d1775AE066A18fad55142A5A85EbfA3E067",
                 "tx_hash": "0x945e3ce61c18ff98cbda193b8a6c401d54aa4db05f57d6b6b6c640e52171ec6c",
                 "block_number": 19803,
@@ -497,7 +497,7 @@
                   {
                     "type": "string",
                     "enum": [
-                      "real"
+                      "isbe"
                     ]
                   },
                   {
@@ -561,7 +561,7 @@
         "tags": [
           "Transactions"
         ],
-        "description": "Hashea la operación con un salt nuevo, guarda el registro y sella el hash en la blockchain, **esperando a la confirmación** antes de responder (≈ 2 s). Ver el flujo completo en la descripción general.",
+        "description": "Hashea la operación con un salt nuevo, guarda el registro y sella el hash en la blockchain ISBE, **esperando a la confirmación** antes de responder (≈ 2 s). Ver el flujo completo en la descripción general.",
         "requestBody": {
           "required": true,
           "content": {

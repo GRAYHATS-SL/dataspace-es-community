@@ -2,13 +2,13 @@ import { config as loadDotenv } from 'dotenv'
 
 loadDotenv({ quiet: true })
 
-export type RealBlockchainConfig = {
-    mode: 'real'
-    /** Nombre legible que se guarda en cada registro (p. ej. "besu-local", "isbe-pre") */
+export type IsbeBlockchainConfig = {
+    mode: 'isbe'
+    /** Nombre legible que se guarda en cada registro (p. ej. "isbe-local", "isbe-pre") */
     networkName: string
     rpcUrl: string
     chainId: number
-    /** Dirección del proxy HashTimestamp desplegado */
+    /** Dirección del proxy HashTimestamp desplegado en ISBE */
     contractAddress: string
     /** Clave de la cuenta con HASH_TIMESTAMP_ROLE. En producción: KMS, nunca una clave en claro */
     privateKey: string
@@ -39,7 +39,7 @@ export type AppConfig = {
     mongodbDb: string
     /** Crea/actualiza la colección, su validador e índices al arrancar */
     dbSetupOnStart: boolean
-    blockchain: RealBlockchainConfig | MockBlockchainConfig
+    blockchain: IsbeBlockchainConfig | MockBlockchainConfig
 }
 
 function required(env: NodeJS.ProcessEnv, name: string): string {
@@ -64,23 +64,23 @@ function boolean(env: NodeJS.ProcessEnv, name: string, fallback: boolean): boole
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     const port = integer(env, 'PORT', 3000)
-    const mode = (env.BLOCKCHAIN_MODE?.trim().toLowerCase() || 'real') as string
-    if (mode !== 'real' && mode !== 'mock')
-        throw new Error(`BLOCKCHAIN_MODE debe ser "real" o "mock" (valor: ${mode})`)
+    const mode = (env.BLOCKCHAIN_MODE?.trim().toLowerCase() || 'isbe') as string
+    if (mode !== 'isbe' && mode !== 'mock')
+        throw new Error(`BLOCKCHAIN_MODE debe ser "isbe" o "mock" (valor: ${mode})`)
 
     const blockchain: AppConfig['blockchain'] =
         mode === 'mock'
             ? { mode: 'mock', latencyMs: integer(env, 'MOCK_LATENCY_MS', 200) }
             : {
-                mode: 'real',
-                networkName: env.BLOCKCHAIN_NETWORK_NAME?.trim() || 'besu-local',
-                rpcUrl: required(env, 'BLOCKCHAIN_RPC_URL'),
-                chainId: integer(env, 'BLOCKCHAIN_CHAIN_ID', 11073),
-                contractAddress: required(env, 'BLOCKCHAIN_HASH_TIMESTAMP_ADDRESS'),
-                privateKey: required(env, 'BLOCKCHAIN_PRIVATE_KEY'),
-                confirmationTimeoutMs: integer(env, 'BLOCKCHAIN_CONFIRMATION_TIMEOUT_MS', 30_000),
-                rpcTimeoutMs: integer(env, 'BLOCKCHAIN_RPC_TIMEOUT_MS', 10_000),
-            }
+                  mode: 'isbe',
+                  networkName: env.ISBE_NETWORK_NAME?.trim() || 'isbe-local',
+                  rpcUrl: required(env, 'ISBE_RPC_URL'),
+                  chainId: integer(env, 'ISBE_CHAIN_ID', 11073),
+                  contractAddress: required(env, 'ISBE_HASH_TIMESTAMP_ADDRESS'),
+                  privateKey: required(env, 'ISBE_PRIVATE_KEY'),
+                  confirmationTimeoutMs: integer(env, 'ISBE_CONFIRMATION_TIMEOUT_MS', 30_000),
+                  rpcTimeoutMs: integer(env, 'ISBE_RPC_TIMEOUT_MS', 10_000),
+              }
 
     return {
         host: env.HOST?.trim() || '0.0.0.0',

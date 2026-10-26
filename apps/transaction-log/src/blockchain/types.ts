@@ -9,7 +9,7 @@ export type StampReceipt = {
 
 /**
  * Lo que el servicio necesita de la blockchain. Hay dos implementaciones:
- * BlockchainHashTimestampClient (red real o local) y MockBlockchainClient (en memoria).
+ * IsbeHashTimestampClient (red ISBE real o local) y MockBlockchainClient (en memoria).
  */
 export interface BlockchainClient {
     /** Nombre de la red, se guarda en cada registro */

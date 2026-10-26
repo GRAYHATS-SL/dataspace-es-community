@@ -12,20 +12,20 @@ services:
     volumes:
       - mongodata:/data/db
     healthcheck:
-      test: [ "CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok" ]
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
       interval: 5s
       timeout: 5s
       retries: 12
     restart: unless-stopped
 
   api:
-    profiles: [ "app" ]
+    profiles: ["app"]
     build: .
     env_file: .env
     environment:
       MONGODB_URI: mongodb://transaction_log:transaction_log@mongo:27017/?authSource=admin
-      # La red local publica el RPC en el host
-      BLOCKCHAIN_RPC_URL: http://host.docker.internal:8545
+      # La red ISBE local publica el RPC en el host
+      ISBE_RPC_URL: http://host.docker.internal:8545
       NODE_ENV: production
     extra_hosts:
       - "host.docker.internal:host-gateway"

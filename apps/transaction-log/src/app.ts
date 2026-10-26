@@ -21,7 +21,7 @@ const addFormats = ((addFormatsPlugin as unknown as { default?: typeof addFormat
 export type AppOptions = {
     repository: TransactionRepository
     blockchain: BlockchainClient
-    blockchainMode: 'real' | 'mock'
+    blockchainMode: 'isbe' | 'mock'
     apiKey?: string
     publicUrl?: string
     logger?: FastifyServerOptions['logger']
@@ -60,7 +60,7 @@ export async function buildApp(options: AppOptions) {
         openapi: {
             openapi: '3.1.0',
             info: {
-                title: 'Transaction Log',
+                title: 'Transaction Log · ISBE',
                 version: API_VERSION,
                 description: API_DESCRIPTION,
             },

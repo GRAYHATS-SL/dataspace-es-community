@@ -1,13 +1,13 @@
 # transaction-log
 
-Servicio que registra operaciones de pedido con **sello de tiempo en la blockchain**.
+Servicio que registra operaciones de pedido con **sello de tiempo en la blockchain ISBE**.
 
 Recibe un JSON con `id_product_order`, `id_product_offer` e `id_buyer`, lo convierte en un hash con *salt*,
-registra ese hash en el contrato **HashTimestamp** (que certifica que la operación existía en esa
+registra ese hash en el contrato **HashTimestamp** de ISBE (que certifica que la operación existía en esa
 fecha) y guarda el registro completo en MongoDB usando el hash como identificador (`_id`).
 
 ```
- cliente ──POST /transactions──► transaction-log ──timestampHash(hash)──► red blockchain (proxy HashTimestamp)
+ cliente ──POST /transactions──► transaction-log ──timestampHash(hash)──► ISBE (proxy HashTimestamp)
                                       │                                         │
                                       │ hash + campos + salt + fechas           │ hash → fecha del bloque
                                       ▼                                         ▼
@@ -18,17 +18,17 @@ Documentación completa de la API (Swagger): **http://localhost:3000/docs** · e
 
 ## Arranque rápido
 
-Requisitos: Node.js ≥ 20.19, Docker y una red local blockchain preferiblemente con Hyperledger Besu
+Requisitos: Node.js ≥ 20.19, Docker y la red ISBE local de `../mi-contrato` en marcha con el proxy
 HashTimestamp desplegado (`mi-contrato/scripts/hashtimestamp/deployHashTimestamp.ts`).
 
 ```bash
 npm install
-cp .env.example .env          # revisar BLOCKCHAIN_HASH_TIMESTAMP_ADDRESS
+cp .env.example .env          # revisar ISBE_HASH_TIMESTAMP_ADDRESS
 docker compose up -d mongo    # MongoDB 8.0 en localhost:27018
 npm run dev                   # crea la colección e índices y arranca en http://localhost:3000
 ```
 
-Sin red: `BLOCKCHAIN_MODE=mock` en `.env` (blockchain simulada en memoria, sin valor probatorio).
+Sin red ISBE: `BLOCKCHAIN_MODE=mock` en `.env` (blockchain simulada en memoria, sin valor probatorio).
 
 Todo en Docker (servicio + MongoDB): `docker compose --profile app up -d --build`.
 
@@ -79,7 +79,7 @@ MongoDB, base de datos `transaction_log`, colección `transaction_log`: **un doc
   updated_at: ISODate('2026-10-19T08:16:14.220Z'),
   blockchain: {
     status: 'confirmed',               // pending → confirmed / failed
-    network: 'besu-local (chainId 11073)',
+    network: 'isbe-local (chainId 11073)',
     contract_address: '0x98717d17…',
     tx_hash: '0x0a87283f…',
     block_number: 30523,
@@ -108,11 +108,11 @@ Todas las variables están documentadas en [`.env.example`](.env.example). Las p
 |---|---|---|
 | `MONGODB_URI`, `MONGODB_DB` | —, `transaction_log` | Conexión MongoDB y base de datos |
 | `DB_SETUP_ON_START` | `true` | Crear/actualizar colección, validador e índices al arrancar |
-| `BLOCKCHAIN_MODE` | `real` | `real` o `mock` |
-| `BLOCKCHAIN_RPC_URL`, `BLOCKCHAIN_CHAIN_ID` | —, `11073` | Nodo BLOCKCHAIN |
-| `BLOCKCHAIN_HASH_TIMESTAMP_ADDRESS` | — | Proxy HashTimestamp |
-| `IBLOCKCHAIN_PRIVATE_KEY` | — | Cuenta con `HASH_TIMESTAMP_ROLE` (local: Account #0 de Hardhat, pública) |
-| `BLOCKCHAIN_CONFIRMATION_TIMEOUT_MS` | `30000` | Espera máxima de confirmación por petición |
+| `BLOCKCHAIN_MODE` | `isbe` | `isbe` o `mock` |
+| `ISBE_RPC_URL`, `ISBE_CHAIN_ID` | —, `11073` | Nodo ISBE |
+| `ISBE_HASH_TIMESTAMP_ADDRESS` | — | Proxy HashTimestamp |
+| `ISBE_PRIVATE_KEY` | — | Cuenta con `HASH_TIMESTAMP_ROLE` (local: Account #0 de Hardhat, pública) |
+| `ISBE_CONFIRMATION_TIMEOUT_MS` | `30000` | Espera máxima de confirmación por petición |
 | `API_KEY` | (vacío) | Si se define, `/transactions` exige la cabecera `x-api-key` |
 
 ## Comportamiento ante fallos
@@ -131,14 +131,14 @@ Todas las variables están documentadas en [`.env.example`](.env.example). Las p
 - **Comisiones**: se usa `eth_gasPrice` del nodo como propina; con la propina 0 que propone ethers por
   defecto, Besu tardaba ~4 bloques (7-8 s) en incluir la transacción, frente a ~1-2 s ahora.
 
-## Paso a la red blockchain real
+## Paso a la red ISBE real
 
 Solo cambia la configuración, no el código:
 
-1. `BLOCKCHAIN_RPC_URL`, `BLOCKCHAIN_CHAIN_ID` e `BLOCKCHAIN_NETWORK_NAME` de la red asignada.
-2. `BLOCKCHAIN_HASH_TIMESTAMP_ADDRESS`: el proxy HashTimestamp que os den (o despleguéis) con vuestra cuenta en `rbacs`.
-3. **Firma con KMS en lugar de `BLOCKCHAIN_PRIVATE_KEY`**: pendiente de implementar un `Signer` KMS en
-   `src/blockchain/realClient.ts` (hoy se usa `Wallet`); confirmar con el administrador de la red el mecanismo exigido.
+1. `ISBE_RPC_URL`, `ISBE_CHAIN_ID` e `ISBE_NETWORK_NAME` de la red que os asigne ISBE.
+2. `ISBE_HASH_TIMESTAMP_ADDRESS`: el proxy HashTimestamp que os den (o despleguéis) con vuestra cuenta en `rbacs`.
+3. **Firma con KMS en lugar de `ISBE_PRIVATE_KEY`**: pendiente de implementar un `Signer` KMS en
+   `src/blockchain/isbeClient.ts` (hoy se usa `Wallet`); confirmar con ISBE el mecanismo exigido.
 4. `API_KEY` (o la autenticación que corresponda) y `PUBLIC_URL`.
 
 ## Desarrollo
@@ -152,7 +152,7 @@ npm run openapi:export   # regenera openapi.json
 ```
 
 Los tests de API usan un repositorio en memoria y una blockchain simulada controlable (fallos, timeouts),
-así que no necesitan base de datos ni red . Los del repositorio (`test/mongoRepository.test.ts`) se
+así que no necesitan base de datos ni red ISBE. Los del repositorio (`test/mongoRepository.test.ts`) se
 ejecutan contra el MongoDB del docker-compose (o `MONGODB_TEST_URI`) en una base de datos temporal que se
 borra al terminar; si no hay MongoDB disponible se omiten.
 
@@ -163,7 +163,7 @@ src/
   config.ts                 variables de entorno
   hashing/jsonHash.ts       JCS + salt + SHA-256
   services/                 flujo de registro, reintento y verificación
-  blockchain/               cliente (ethers) y simulador; ABI de HashTimestamp
+  blockchain/               cliente ISBE (ethers) y simulador; ABI de HashTimestamp
   db/                       repositorio MongoDB, validador $jsonSchema e índices
   http/                     rutas, esquemas (validación + OpenAPI) y textos del Swagger
 test/                       node:test
@@ -174,6 +174,6 @@ test/                       node:test
 - **Una cuenta por instancia**: el contador de nonces vive en memoria. Varias instancias con la misma cuenta
   colisionarían; usar una cuenta por instancia o una cola única de envío.
 - Si una transacción enviada se pierde del *mempool* sin minarse, los envíos posteriores quedarían
-  esperando ese nonce. Se resuelve reiniciando el servicio.
+  esperando ese nonce. Poco probable en ISBE; se resuelve reiniciando el servicio.
 - El modo `mock` no persiste: tras reiniciar, la verificación de registros `mock` da `on_chain: false`.
 - Sin autenticación por defecto (solo `API_KEY` opcional).
